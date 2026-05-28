@@ -17,14 +17,14 @@ export default function Logo({ className = "", width = 180, height = 50 }: LogoP
       className={className}
       aria-label="INVERTECH CLIMA - Tecnologia que transforma. Conforto que você sente."
     >
-      {/* INVER text - dark blue */}
+      {/* INVER text - white for optimal dark mode contrast */}
       <text
         x="10"
         y="62"
         fontFamily="system-ui, -apple-system, sans-serif"
         fontWeight="900"
         fontSize="42"
-        fill="#0C2D6B"
+        fill="#FFFFFF"
         letterSpacing="-0.5"
       >
         INVER
