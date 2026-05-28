@@ -72,7 +72,7 @@ export default function RootLayout({
               description:
                 "Empresa especializada em instalação, manutenção e higienização de ar-condicionado com tecnologia inverter em Palmas-TO.",
               telephone: "+5563991129517",
-              url: "https://invertech-clima.vercel.app",
+              url: "https://invertechclima.vercel.app",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Palmas",
