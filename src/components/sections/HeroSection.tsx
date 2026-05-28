@@ -95,7 +95,7 @@ export default function HeroSection() {
 
             {/* Quick Conversion Badges (Google Traffic) */}
             <motion.div
-              className="grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 mb-8 text-left"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 mb-8 text-left"
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
@@ -160,8 +160,8 @@ export default function HeroSection() {
             animate="visible"
             transition={{ delay: 0.3 }}
           >
-            {/* Dynamic Glass Container */}
-            <div className="relative group w-full max-w-[450px] aspect-[4/5] sm:aspect-[4/4.5] lg:aspect-[4/5] rounded-[32px] overflow-hidden p-3 bg-gradient-to-br from-blue-500/5 via-cyan-500/0 to-emerald-500/5 border border-slate-200 shadow-[0_15px_50px_rgba(0,0,0,0.05)] transition-all duration-700 hover:border-emerald-500/25">
+            {/* Dynamic Glass Container (removed overflow-hidden to allow badges to float over border) */}
+            <div className="relative group w-full max-w-[450px] aspect-[4/5] sm:aspect-[4/4.5] lg:aspect-[4/5] rounded-[32px] p-3 bg-gradient-to-br from-blue-500/5 via-cyan-500/0 to-emerald-500/5 border border-slate-200 shadow-[0_15px_50px_rgba(0,0,0,0.05)] transition-all duration-700 hover:border-emerald-500/25">
               
               {/* Inner Wrapper */}
               <div className="relative w-full h-full rounded-[24px] overflow-hidden">
@@ -181,7 +181,7 @@ export default function HeroSection() {
 
               {/* Floating Economy Badge */}
               <motion.div
-                className="absolute top-8 -left-6 bg-white/95 backdrop-blur-md border border-emerald-100 rounded-2xl p-3.5 shadow-2xl flex items-center gap-3"
+                className="absolute top-8 -left-2 sm:-left-6 bg-white/95 backdrop-blur-md border border-emerald-100 rounded-2xl p-3.5 shadow-2xl flex items-center gap-3 z-10"
                 animate={floatAnimation}
               >
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
@@ -195,7 +195,7 @@ export default function HeroSection() {
 
               {/* Floating Experience Badge */}
               <motion.div
-                className="absolute bottom-10 -right-6 bg-white/95 backdrop-blur-md border border-blue-100 rounded-2xl p-3.5 shadow-2xl flex items-center gap-3"
+                className="absolute bottom-10 -right-2 sm:-right-6 bg-white/95 backdrop-blur-md border border-blue-100 rounded-2xl p-3.5 shadow-2xl flex items-center gap-3 z-10"
                 animate={{
                   y: [0, 8, 0],
                   transition: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
