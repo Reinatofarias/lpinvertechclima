@@ -26,13 +26,13 @@ interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   whatsapp:
-    "bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white shadow-[0_0_25px_rgba(16,185,129,0.3)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)]",
+    "bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-450 hover:to-emerald-550 text-white shadow-[0_4px_15px_rgba(16,185,129,0.15)] hover:shadow-[0_10px_25px_rgba(16,185,129,0.25)]",
   phone:
-    "bg-transparent border border-blue-400/40 hover:border-blue-400/80 text-blue-300 hover:text-white hover:bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.1)] hover:shadow-[0_0_25px_rgba(59,130,246,0.2)]",
+    "bg-blue-50 border border-blue-100 text-blue-600 hover:bg-blue-100 hover:border-blue-200 shadow-[0_4px_15px_rgba(37,99,235,0.02)] hover:shadow-[0_8px_20px_rgba(37,99,235,0.05)]",
   outline:
-    "bg-transparent border border-slate-600 hover:border-blue-400/60 text-slate-300 hover:text-white",
+    "bg-transparent border border-slate-200 hover:border-slate-300 text-slate-650 hover:bg-slate-50 hover:text-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.01)]",
   ghost:
-    "bg-transparent hover:bg-white/5 text-slate-300 hover:text-white",
+    "bg-transparent hover:bg-slate-50 text-slate-600 hover:text-slate-800",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

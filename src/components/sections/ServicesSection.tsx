@@ -25,7 +25,7 @@ export default function ServicesSection() {
   const dynamicWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <section id="servicos" className="relative py-20 md:py-28 overflow-hidden bg-[#F8FAFC]">
+    <section id="servicos" className="relative py-20 md:py-28 overflow-hidden bg-white">
       {/* Decorative background glows */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
