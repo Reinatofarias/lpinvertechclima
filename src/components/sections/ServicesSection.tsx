@@ -50,9 +50,6 @@ export default function ServicesSection() {
             whileInView="visible"
             viewport={viewportConfig}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
-              Compromisso Invertech
-            </div>
             <h3 className="text-2xl md:text-3xl font-bold text-[#0C2D6B] font-outfit leading-tight">
               O serviço mais limpo e qualificado de Palmas
             </h3>
@@ -179,9 +176,6 @@ export default function ServicesSection() {
             
             {/* Header */}
             <div className="mb-6 text-center">
-              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold tracking-wider uppercase">
-                Simulador de Economia Inverter
-              </span>
               <h3 className="text-xl md:text-2xl font-bold text-[#0C2D6B] font-outfit mt-2">
                 Veja o quanto você economiza na conta de luz de Palmas
               </h3>

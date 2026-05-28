@@ -58,38 +58,7 @@ export default function HeroSection() {
           {/* Left Column: Headline and CTAs */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col justify-center">
             
-            {/* Google trust badge */}
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="flex justify-center lg:justify-start mb-6"
-            >
-              <div className="inline-flex items-center gap-2.5 px-4.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 shadow-[0_2px_10px_rgba(37,99,235,0.03)] backdrop-blur-md">
-                <div className="flex gap-0.5 text-amber-500">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
-                <span className="text-slate-600 text-xs font-semibold">
-                  Google Rating 4.9★ <span className="text-slate-300">•</span> +400 Clientes em Palmas
-                </span>
-              </div>
-            </motion.div>
 
-            {/* Badge Local */}
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.05 }}
-              className="mb-4 flex justify-center lg:justify-start"
-            >
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold tracking-wider uppercase">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Atendimento Rápido em Palmas
-              </span>
-            </motion.div>
 
             {/* Headline - Using original #0C2D6B brand blue */}
             <motion.h1

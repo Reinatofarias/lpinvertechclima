@@ -111,9 +111,6 @@ export default function TestimonialsSection() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-emerald-500/[0.04] rounded-full blur-[80px] pointer-events-none" />
 
           <div className="relative z-10 max-w-2xl mx-auto">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 mb-6 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-semibold tracking-wider uppercase">
-              Orçamento Rápido em Palmas
-            </span>
             <h3 className="text-2xl md:text-4xl font-bold text-[#0C2D6B] font-outfit mb-4">
               Pronto para ter o máximo conforto com economia?
             </h3>

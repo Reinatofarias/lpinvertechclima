@@ -26,20 +26,7 @@ export default function SectionHeading({
       whileInView="visible"
       viewport={viewportConfig}
     >
-      {badge && (
-        <span
-          className={`
-            inline-block px-4 py-1.5 mb-4 rounded-full text-xs font-semibold tracking-widest uppercase
-            ${
-              light
-                ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                : "bg-blue-50 text-blue-600 border border-blue-100 shadow-[0_2px_10px_rgba(37,99,235,0.02)]"
-            }
-          `}
-        >
-          {badge}
-        </span>
-      )}
+
       <h2
         className={`
           text-2xl md:text-4xl lg:text-[42px] font-bold leading-tight tracking-tight font-outfit
