@@ -1,14 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import * as LucideIcons from "lucide-react";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { SERVICES, CTA_WHATSAPP } from "@/lib/constants";
+import { SERVICES, CTA_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/constants";
 import { staggerContainer, staggerItem, fadeInLeft, fadeInRight, viewportConfig } from "@/lib/animations";
+import { trackCtaClick } from "@/lib/analytics";
 
 export default function ServicesSection() {
+  const [bill, setBill] = useState(500); // monthly bill in BRL
+  const savingPercent = 0.60;
+  const inverterBill = Math.round(bill * (1 - savingPercent));
+  const monthlySaving = bill - inverterBill;
+  const yearlySaving = monthlySaving * 12;
+
+  const handleSimulateCta = () => {
+    trackCtaClick("whatsapp", "simulator", `Quero economizar R$ ${monthlySaving}/mes`);
+  };
+
+  const whatsappMessage = `Olá! Fiz a simulação no site e vi que posso economizar cerca de R$ ${monthlySaving} por mês na conta de luz de Palmas usando ar-condicionado Inverter. Gostaria de um orçamento para minha casa/empresa!`;
+  const dynamicWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+
   return (
     <section id="servicos" className="relative py-20 md:py-28 overflow-hidden">
       {/* Background */}
@@ -21,9 +36,9 @@ export default function ServicesSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionHeading
-          badge="Serviços"
-          title="Soluções Completas em Climatização"
-          subtitle="Do projeto à manutenção, cuidamos de tudo para você ter o máximo conforto com a melhor eficiência."
+          badge="Serviços & Economia"
+          title="Soluções em Climatização & Simulador Inverter"
+          subtitle="Do projeto à manutenção, cuidamos de tudo para você ter o máximo conforto com a melhor eficiência energética."
         />
 
         {/* Brand Promise / Quality Trust Split Block */}
@@ -105,7 +120,7 @@ export default function ServicesSection() {
 
         {/* Services Cards Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-16 md:mb-24"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -153,20 +168,142 @@ export default function ServicesSection() {
           })}
         </motion.div>
 
-        {/* Bottom CTA */}
+        {/* Unified Energy Savings Simulator Card */}
         <motion.div
-          className="mt-12 text-center"
+          className="max-w-4xl mx-auto relative w-full"
           variants={staggerItem}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <Button variant="whatsapp" size="lg" ctaLocation="services" className="shadow-emerald-500/25">
-            {CTA_WHATSAPP}
-          </Button>
+          <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-br from-[rgba(15,33,64,0.8)] to-[rgba(10,22,40,0.9)] backdrop-blur-md border border-blue-500/15 shadow-[0_0_40px_rgba(59,130,246,0.08)]">
+            
+            {/* Header */}
+            <div className="mb-6 text-center">
+              <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] font-bold tracking-wider uppercase">
+                Simulador de Economia Inverter
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit mt-2">
+                Veja o quanto você economiza na conta de luz de Palmas
+              </h3>
+              <p className="text-slate-400 text-xs mt-1">
+                A tecnologia Inverter reduz o consumo em até 60% em relação aos aparelhos comuns.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-8">
+              
+              {/* Slider Controls */}
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-300 text-sm font-medium">Sua conta de luz atual:</span>
+                    <span className="text-2xl font-extrabold text-blue-400 font-outfit">
+                      R$ {bill} <span className="text-xs text-slate-500 font-normal">/mês</span>
+                    </span>
+                  </div>
+                  
+                  <input
+                    type="range"
+                    min="150"
+                    max="1500"
+                    step="50"
+                    value={bill}
+                    onChange={(e) => setBill(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg bg-slate-800 appearance-none cursor-pointer accent-emerald-400"
+                    style={{
+                      background: `linear-gradient(to right, #10B981 0%, #10B981 ${((bill - 150) / 1350) * 100}%, #1E293B ${((bill - 150) / 1350) * 100}%, #1E293B 100%)`
+                    }}
+                  />
+                  
+                  <div className="flex justify-between text-[10px] text-slate-500">
+                    <span>R$ 150</span>
+                    <span>R$ 800</span>
+                    <span>R$ 1500</span>
+                  </div>
+                </div>
+
+                {/* Bars Visual */}
+                <div className="space-y-4 bg-slate-900/40 p-4.5 rounded-2xl border border-slate-800/40">
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-xs font-semibold">
+                      <span className="text-slate-400">Ar Convencional</span>
+                      <span className="text-rose-400">R$ {bill}</span>
+                    </div>
+                    <div className="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
+                      <motion.div 
+                        className="h-full bg-rose-500"
+                        initial={{ width: "0%" }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <div className="flex justify-between text-xs font-semibold">
+                      <span className="text-emerald-300">Ar Inverter (Invertech)</span>
+                      <span className="text-emerald-400">R$ {inverterBill}</span>
+                    </div>
+                    <div className="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
+                      <motion.div 
+                        className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400"
+                        initial={{ width: "0%" }}
+                        animate={{ width: "40%" }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Savings display and CTA */}
+              <div className="flex flex-col justify-between h-full bg-slate-900/20 p-5 rounded-2xl border border-slate-800/20">
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/10 text-center">
+                    <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1">
+                      Economia Mensal
+                    </span>
+                    <span className="text-lg md:text-xl font-extrabold text-emerald-400 font-outfit">
+                      R$ {monthlySaving}
+                    </span>
+                  </div>
+                  <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/10 text-center">
+                    <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1">
+                      Economia Anual
+                    </span>
+                    <span className="text-lg md:text-xl font-extrabold text-emerald-400 font-outfit">
+                      R$ {yearlySaving}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <a
+                    href={dynamicWhatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleSimulateCta}
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-bold text-sm tracking-wide shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:shadow-[0_0_40px_rgba(16,185,129,0.35)] cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <LucideIcons.MessageCircle className="w-5 h-5 shrink-0" />
+                    <span>Quero economizar R$ {monthlySaving}/mês</span>
+                  </a>
+                  <p className="text-[9px] text-slate-500 mt-2.5">
+                    *Cálculo baseado na diferença média de consumo de energia de Palmas.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Background glow for the card */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/5 to-emerald-500/5 rounded-3xl blur-2xl -z-10" />
         </motion.div>
+
       </div>
     </section>
   );
 }
-

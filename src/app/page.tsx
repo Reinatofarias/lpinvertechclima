@@ -2,28 +2,26 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyCtaMobile from "@/components/layout/StickyCtaMobile";
 import HeroSection from "@/components/sections/HeroSection";
-import SocialProofBar from "@/components/sections/SocialProofBar";
-import BenefitsSection from "@/components/sections/BenefitsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import WhyInvertech from "@/components/sections/WhyInvertech";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import FinalCtaSection from "@/components/sections/FinalCtaSection";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main>
+        {/* Sessão 1: Hero Visual & Trust Indicators */}
         <HeroSection />
-        <SocialProofBar />
-        <BenefitsSection />
+        
+        {/* Sessão 2: Serviços & Simulador de Economia Inverter */}
         <ServicesSection />
-        <WhyInvertech />
+        
+        {/* Sessão 3: Prova Social Google & Oferta / CTA Final */}
         <TestimonialsSection />
-        <FinalCtaSection />
       </main>
       <Footer />
       <StickyCtaMobile />
     </>
   );
 }
+

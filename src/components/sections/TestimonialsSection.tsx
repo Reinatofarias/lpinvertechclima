@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { Star, Quote, CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { TESTIMONIALS } from "@/lib/constants";
+import Button from "@/components/ui/Button";
+import { TESTIMONIALS, CTA_WHATSAPP, CTA_PHONE } from "@/lib/constants";
 import { staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
 export default function TestimonialsSection() {
@@ -98,6 +99,48 @@ export default function TestimonialsSection() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Final Conversion Block */}
+        <motion.div
+          id="contato"
+          className="mt-16 md:mt-24 max-w-4xl mx-auto p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#0A1628]/80 to-[rgba(10,22,40,0.9)] backdrop-blur-md border border-emerald-500/20 text-center relative overflow-hidden shadow-[0_0_40px_rgba(16,185,129,0.06)] animate-pulse-glow"
+          variants={staggerItem}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+        >
+          {/* Glow effect */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 mb-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase">
+              Orçamento Rápido em Palmas
+            </span>
+            <h3 className="text-2xl md:text-4xl font-bold text-white font-outfit mb-4">
+              Pronto para ter o máximo conforto com economia?
+            </h3>
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
+              Fale conosco hoje mesmo. Solicite seu orçamento gratuito sem nenhum compromisso. Atendemos rapidamente em Palmas-TO.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button variant="whatsapp" size="lg" ctaLocation="testimonials-cta" className="w-full sm:w-auto shadow-emerald-500/25">
+                {CTA_WHATSAPP}
+              </Button>
+              <Button variant="phone" size="lg" ctaLocation="testimonials-cta" className="w-full sm:w-auto">
+                {CTA_PHONE}
+              </Button>
+            </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-slate-500 text-xs">
+              {["Sem taxa de visita", "Retorno em até 1h", "Garantia de 1 ano", "Equipe autorizada"].map((item) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/60" />
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

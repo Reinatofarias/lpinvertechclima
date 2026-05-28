@@ -134,7 +134,6 @@ export const TESTIMONIALS = [
 // Navigation
 export const NAV_LINKS = [
   { label: "Início", href: "#hero" },
-  { label: "Benefícios", href: "#beneficios" },
   { label: "Serviços", href: "#servicos" },
   { label: "Contato", href: "#contato" },
 ];
