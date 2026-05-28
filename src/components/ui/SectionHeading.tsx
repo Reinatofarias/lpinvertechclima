@@ -33,7 +33,7 @@ export default function SectionHeading({
             ${
               light
                 ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                : "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                : "bg-blue-50 text-blue-600 border border-blue-100 shadow-[0_2px_10px_rgba(37,99,235,0.02)]"
             }
           `}
         >
@@ -43,7 +43,7 @@ export default function SectionHeading({
       <h2
         className={`
           text-2xl md:text-4xl lg:text-[42px] font-bold leading-tight tracking-tight font-outfit
-          ${light ? "text-white" : "text-white"}
+          ${light ? "text-white" : "text-[#0C2D6B]"}
         `}
       >
         {title}
@@ -53,7 +53,7 @@ export default function SectionHeading({
           className={`
             mt-4 text-base md:text-lg max-w-2xl leading-relaxed
             ${centered ? "mx-auto" : ""}
-            ${light ? "text-slate-400" : "text-slate-400"}
+            ${light ? "text-slate-400" : "text-slate-600"}
           `}
         >
           {subtitle}

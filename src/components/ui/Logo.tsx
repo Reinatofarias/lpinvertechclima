@@ -4,9 +4,10 @@ interface LogoProps {
   className?: string;
   width?: number;
   height?: number;
+  isDarkBg?: boolean;
 }
 
-export default function Logo({ className = "", width = 180, height = 50 }: LogoProps) {
+export default function Logo({ className = "", width = 180, height = 50, isDarkBg = false }: LogoProps) {
   return (
     <svg
       width={width}
@@ -17,14 +18,14 @@ export default function Logo({ className = "", width = 180, height = 50 }: LogoP
       className={className}
       aria-label="INVERTECH CLIMA - Tecnologia que transforma. Conforto que você sente."
     >
-      {/* INVER text - white for optimal dark mode contrast */}
+      {/* INVER text - dark blue / white */}
       <text
         x="10"
         y="62"
         fontFamily="system-ui, -apple-system, sans-serif"
         fontWeight="900"
         fontSize="42"
-        fill="#FFFFFF"
+        fill={isDarkBg ? "#FFFFFF" : "#0C2D6B"}
         letterSpacing="-0.5"
       >
         INVER

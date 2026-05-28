@@ -47,7 +47,7 @@ export default function Navbar() {
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-[rgba(10,22,40,0.85)] backdrop-blur-xl border-b border-blue-500/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+            ? "bg-[rgba(255,255,255,0.85)] backdrop-blur-xl border-b border-slate-200/60 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
             : "bg-transparent"
         }`}
         initial={{ y: -100 }}
@@ -72,10 +72,10 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300 group"
+                  className="relative text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-300 group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 group-hover:w-full transition-all duration-300" />
                 </a>
               ))}
               <Button variant="whatsapp" size="sm" ctaLocation="navbar">
@@ -85,7 +85,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden relative w-10 h-10 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+              className="md:hidden relative w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={isMobileMenuOpen}
@@ -104,7 +104,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[#0A1628]/98 backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-40 bg-[#FFFFFF]/98 backdrop-blur-2xl md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -116,7 +116,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-2xl font-semibold text-white/80 hover:text-white transition-colors font-outfit"
+                  className="text-2xl font-semibold text-slate-700 hover:text-slate-900 transition-colors font-outfit"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 + 0.1 }}
@@ -127,7 +127,7 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.4 }}
                 className="mt-4"
               >
                 <Button

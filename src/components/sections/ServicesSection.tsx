@@ -6,7 +6,7 @@ import * as LucideIcons from "lucide-react";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { SERVICES, CTA_WHATSAPP, WHATSAPP_NUMBER } from "@/lib/constants";
+import { SERVICES, WHATSAPP_NUMBER } from "@/lib/constants";
 import { staggerContainer, staggerItem, fadeInLeft, fadeInRight, viewportConfig } from "@/lib/animations";
 import { trackCtaClick } from "@/lib/analytics";
 
@@ -25,11 +25,8 @@ export default function ServicesSection() {
   const dynamicWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <section id="servicos" className="relative py-20 md:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#0F2140]" />
-
-      {/* Decorative elements */}
+    <section id="servicos" className="relative py-20 md:py-28 overflow-hidden bg-[#F8FAFC]">
+      {/* Decorative background glows */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -39,6 +36,7 @@ export default function ServicesSection() {
           badge="Serviços & Economia"
           title="Soluções em Climatização & Simulador Inverter"
           subtitle="Do projeto à manutenção, cuidamos de tudo para você ter o máximo conforto com a melhor eficiência energética."
+          light={false}
         />
 
         {/* Brand Promise / Quality Trust Split Block */}
@@ -52,13 +50,13 @@ export default function ServicesSection() {
             whileInView="visible"
             viewport={viewportConfig}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-              Compromisso Invech
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
+              Compromisso Invertech
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white font-outfit leading-tight">
+            <h3 className="text-2xl md:text-3xl font-bold text-[#0C2D6B] font-outfit leading-tight">
               O serviço mais limpo e qualificado de Palmas
             </h3>
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
               Sabemos que receber um técnico em sua casa ou empresa exige confiança. Por isso, a nossa equipe segue um rigoroso padrão de qualidade de serviço e higienização.
             </p>
 
@@ -71,12 +69,12 @@ export default function ServicesSection() {
                 { title: "Garantia por Escrito", desc: "Todos os serviços acompanham laudo e garantia documentada." },
               ].map((point, index) => (
                 <div key={index} className="flex gap-3 items-start">
-                  <div className="shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30 mt-0.5">
-                    <LucideIcons.Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="shrink-0 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center border border-emerald-200 mt-0.5">
+                    <LucideIcons.Check className="w-3.5 h-3.5 text-emerald-600" />
                   </div>
                   <div>
-                    <h4 className="text-white text-sm font-semibold font-outfit">{point.title}</h4>
-                    <p className="text-slate-400 text-xs mt-0.5">{point.desc}</p>
+                    <h4 className="text-slate-800 text-sm font-semibold font-outfit">{point.title}</h4>
+                    <p className="text-slate-500 text-xs mt-0.5">{point.desc}</p>
                   </div>
                 </div>
               ))}
@@ -91,7 +89,7 @@ export default function ServicesSection() {
             whileInView="visible"
             viewport={viewportConfig}
           >
-            <div className="relative w-full max-w-[380px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2.5 bg-gradient-to-br from-emerald-500/15 to-blue-500/10 border border-emerald-500/20 shadow-[0_0_40px_rgba(16,185,129,0.1)]">
+            <div className="relative w-full max-w-[380px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2.5 bg-gradient-to-br from-emerald-500/10 to-blue-500/5 border border-emerald-100 shadow-[0_10px_35px_rgba(16,185,129,0.06)]">
               <div className="relative w-full h-full rounded-[18px] overflow-hidden">
                 <Image 
                   src="/images/technician.png"
@@ -99,18 +97,19 @@ export default function ServicesSection() {
                   fill
                   sizes="(max-w-768px) 100vw, 380px"
                   className="object-cover object-center"
+                  priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F2140]/90 via-[#0F2140]/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
               </div>
               
               {/* Badge overlay */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-slate-900/90 backdrop-blur-sm border border-emerald-500/20 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center shrink-0">
-                  <LucideIcons.Sparkles className="w-4 h-4 text-emerald-400" />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-sm border border-emerald-100 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-100">
+                  <LucideIcons.Sparkles className="w-4 h-4 text-emerald-600" />
                 </div>
                 <div>
-                  <h4 className="text-white text-xs font-bold font-outfit">Higienização Profissional</h4>
-                  <p className="text-[10px] text-slate-400">Elimina 99% de fungos e bactérias</p>
+                  <h4 className="text-[#0C2D6B] text-xs font-bold font-outfit">Higienização Profissional</h4>
+                  <p className="text-[10px] text-slate-500">Elimina 99% de fungos e bactérias</p>
                 </div>
               </div>
             </div>
@@ -133,22 +132,22 @@ export default function ServicesSection() {
               <motion.div
                 key={service.title}
                 variants={staggerItem}
-                className="group relative p-6 md:p-8 rounded-2xl bg-[rgba(10,22,40,0.6)] backdrop-blur-md border border-blue-500/10 hover:border-emerald-500/25 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(16,185,129,0.08)]"
+                className="group relative p-6 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
               >
-                {/* Hover gradient */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Hover subtle tint */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/[0.01] to-blue-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="w-14 h-14 mb-5 rounded-2xl bg-gradient-to-br from-emerald-500/15 to-cyan-500/15 flex items-center justify-center border border-emerald-500/10 group-hover:border-emerald-400/25 transition-colors duration-300">
-                    <IconComponent className="w-7 h-7 text-emerald-400 group-hover:text-emerald-300 transition-colors duration-300" />
+                  <div className="w-14 h-14 mb-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 flex items-center justify-center border border-emerald-100 group-hover:border-emerald-200 transition-colors duration-300">
+                    <IconComponent className="w-7 h-7 text-emerald-600 group-hover:text-emerald-500 transition-colors duration-300" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-lg font-semibold text-white mb-3 font-outfit">
+                  <h3 className="text-lg font-semibold text-[#0C2D6B] mb-3 font-outfit">
                     {service.title}
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-5">
+                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
                     {service.description}
                   </p>
 
@@ -158,7 +157,7 @@ export default function ServicesSection() {
                     size="sm"
                     ctaLocation={`services-${service.title}`}
                     showArrow
-                    className="!px-0 text-emerald-400 hover:text-emerald-300"
+                    className="!px-0 text-emerald-600 hover:text-emerald-700 font-semibold"
                   >
                     Solicitar Orçamento
                   </Button>
@@ -176,17 +175,17 @@ export default function ServicesSection() {
           whileInView="visible"
           viewport={viewportConfig}
         >
-          <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-br from-[rgba(15,33,64,0.8)] to-[rgba(10,22,40,0.9)] backdrop-blur-md border border-blue-500/15 shadow-[0_0_40px_rgba(59,130,246,0.08)]">
+          <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl bg-white border border-slate-200/80 shadow-[0_20px_50px_rgba(15,23,42,0.04)]">
             
             {/* Header */}
             <div className="mb-6 text-center">
-              <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] font-bold tracking-wider uppercase">
+              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-[10px] font-bold tracking-wider uppercase">
                 Simulador de Economia Inverter
               </span>
-              <h3 className="text-xl md:text-2xl font-bold text-white font-outfit mt-2">
+              <h3 className="text-xl md:text-2xl font-bold text-[#0C2D6B] font-outfit mt-2">
                 Veja o quanto você economiza na conta de luz de Palmas
               </h3>
-              <p className="text-slate-400 text-xs mt-1">
+              <p className="text-slate-600 text-xs mt-1">
                 A tecnologia Inverter reduz o consumo em até 60% em relação aos aparelhos comuns.
               </p>
             </div>
@@ -197,8 +196,8 @@ export default function ServicesSection() {
               <div className="space-y-6">
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-300 text-sm font-medium">Sua conta de luz atual:</span>
-                    <span className="text-2xl font-extrabold text-blue-400 font-outfit">
+                    <span className="text-slate-700 text-sm font-medium">Sua conta de luz atual:</span>
+                    <span className="text-2xl font-extrabold text-blue-600 font-outfit">
                       R$ {bill} <span className="text-xs text-slate-500 font-normal">/mês</span>
                     </span>
                   </div>
@@ -210,13 +209,13 @@ export default function ServicesSection() {
                     step="50"
                     value={bill}
                     onChange={(e) => setBill(Number(e.target.value))}
-                    className="w-full h-2 rounded-lg bg-slate-800 appearance-none cursor-pointer accent-emerald-400"
+                    className="w-full h-2 rounded-lg bg-slate-100 appearance-none cursor-pointer accent-emerald-500"
                     style={{
-                      background: `linear-gradient(to right, #10B981 0%, #10B981 ${((bill - 150) / 1350) * 100}%, #1E293B ${((bill - 150) / 1350) * 100}%, #1E293B 100%)`
+                      background: `linear-gradient(to right, #10B981 0%, #10B981 ${((bill - 150) / 1350) * 100}%, #E2E8F0 ${((bill - 150) / 1350) * 100}%, #E2E8F0 100%)`
                     }}
                   />
                   
-                  <div className="flex justify-between text-[10px] text-slate-500">
+                  <div className="flex justify-between text-[10px] text-slate-450">
                     <span>R$ 150</span>
                     <span>R$ 800</span>
                     <span>R$ 1500</span>
@@ -224,13 +223,13 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Bars Visual */}
-                <div className="space-y-4 bg-slate-900/40 p-4.5 rounded-2xl border border-slate-800/40">
+                <div className="space-y-4 bg-slate-50 p-5 rounded-2xl border border-slate-100">
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-xs font-semibold">
-                      <span className="text-slate-400">Ar Convencional</span>
-                      <span className="text-rose-400">R$ {bill}</span>
+                      <span className="text-slate-600">Ar Convencional</span>
+                      <span className="text-rose-600">R$ {bill}</span>
                     </div>
-                    <div className="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div className="w-full h-2.5 rounded-full bg-slate-200 overflow-hidden">
                       <motion.div 
                         className="h-full bg-rose-500"
                         initial={{ width: "0%" }}
@@ -242,10 +241,10 @@ export default function ServicesSection() {
 
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-xs font-semibold">
-                      <span className="text-emerald-300">Ar Inverter (Invertech)</span>
-                      <span className="text-emerald-400">R$ {inverterBill}</span>
+                      <span className="text-emerald-700">Ar Inverter (Invertech)</span>
+                      <span className="text-emerald-600">R$ {inverterBill}</span>
                     </div>
-                    <div className="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div className="w-full h-2.5 rounded-full bg-slate-200 overflow-hidden">
                       <motion.div 
                         className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400"
                         initial={{ width: "0%" }}
@@ -258,21 +257,21 @@ export default function ServicesSection() {
               </div>
 
               {/* Savings display and CTA */}
-              <div className="flex flex-col justify-between h-full bg-slate-900/20 p-5 rounded-2xl border border-slate-800/20">
+              <div className="flex flex-col justify-between h-full bg-[#F8FAFC] p-5 rounded-2xl border border-slate-200/60">
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/10 text-center">
-                    <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1">
+                  <div className="p-3 bg-white rounded-xl border border-emerald-100 shadow-[0_4px_20px_rgba(16,185,129,0.03)] text-center">
+                    <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider mb-1">
                       Economia Mensal
                     </span>
-                    <span className="text-lg md:text-xl font-extrabold text-emerald-400 font-outfit">
+                    <span className="text-lg md:text-xl font-extrabold text-emerald-600 font-outfit">
                       R$ {monthlySaving}
                     </span>
                   </div>
-                  <div className="p-3 bg-emerald-500/5 rounded-xl border border-emerald-500/10 text-center">
-                    <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1">
+                  <div className="p-3 bg-white rounded-xl border border-emerald-100 shadow-[0_4px_20px_rgba(16,185,129,0.03)] text-center">
+                    <span className="text-[10px] text-slate-500 block uppercase font-bold tracking-wider mb-1">
                       Economia Anual
                     </span>
-                    <span className="text-lg md:text-xl font-extrabold text-emerald-400 font-outfit">
+                    <span className="text-lg md:text-xl font-extrabold text-emerald-600 font-outfit">
                       R$ {yearlySaving}
                     </span>
                   </div>
@@ -284,12 +283,12 @@ export default function ServicesSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSimulateCta}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-bold text-sm tracking-wide shadow-[0_0_30px_rgba(16,185,129,0.2)] hover:shadow-[0_0_40px_rgba(16,185,129,0.35)] cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-bold text-sm tracking-wide shadow-[0_10px_25px_rgba(16,185,129,0.15)] hover:shadow-[0_15px_30px_rgba(16,185,129,0.25)] cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <LucideIcons.MessageCircle className="w-5 h-5 shrink-0" />
                     <span>Quero economizar R$ {monthlySaving}/mês</span>
                   </a>
-                  <p className="text-[9px] text-slate-500 mt-2.5">
+                  <p className="text-[9px] text-slate-400 mt-2.5">
                     *Cálculo baseado na diferença média de consumo de energia de Palmas.
                   </p>
                 </div>
@@ -300,7 +299,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Background glow for the card */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/5 to-emerald-500/5 rounded-3xl blur-2xl -z-10" />
+          <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/[0.02] to-emerald-500/[0.02] rounded-3xl blur-2xl -z-10" />
         </motion.div>
 
       </div>

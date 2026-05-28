@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="flex flex-col items-center text-center gap-6">
           {/* Logo */}
-          <Logo className="h-10 w-auto opacity-70" />
+          <Logo isDarkBg={true} className="h-10 w-auto opacity-80" />
 
           {/* Tagline */}
           <p className="text-slate-500 text-sm italic max-w-sm">

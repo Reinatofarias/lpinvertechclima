@@ -7,6 +7,7 @@ interface GlowOrbProps {
   size?: "sm" | "md" | "lg";
   position?: string;
   delay?: number;
+  className?: string;
 }
 
 const colorMap = {
@@ -26,10 +27,11 @@ export default function GlowOrb({
   size = "md",
   position = "top-0 left-1/2 -translate-x-1/2",
   delay = 0,
+  className = "",
 }: GlowOrbProps) {
   return (
     <motion.div
-      className={`absolute ${position} ${sizeMap[size]} ${colorMap[color]} rounded-full blur-[100px] pointer-events-none`}
+      className={`absolute ${position} ${sizeMap[size]} ${colorMap[color]} rounded-full blur-[100px] pointer-events-none ${className}`}
       animate={{
         scale: [1, 1.1, 1],
         opacity: [0.6, 0.9, 0.6],
