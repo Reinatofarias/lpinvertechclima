@@ -61,8 +61,8 @@ export default function ServicesSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {[
                 { title: "Sujeira Zero", desc: "Trabalhamos com coletores de resíduos e limpamos tudo antes de sair." },
+                { title: "Reparo de Placas", desc: "Conserto especializado de placas eletrônicas inverter sem precisar comprar outro ar." },
                 { title: "Técnicos Credenciados", desc: "Treinados pelos principais fabricantes do mercado nacional." },
-                { title: "Pontualidade Rigorosa", desc: "Respeitamos seu tempo com horários agendados e sem atrasos." },
                 { title: "Garantia por Escrito", desc: "Todos os serviços acompanham laudo e garantia documentada." },
               ].map((point, index) => (
                 <div key={index} className="flex gap-3 items-start">

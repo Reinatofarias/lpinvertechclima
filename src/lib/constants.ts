@@ -105,6 +105,12 @@ export const SERVICES = [
     description:
       "Upgrade do seu equipamento antigo para tecnologia inverter. Economia de até 60% na conta de luz.",
   },
+  {
+    icon: "Cpu",
+    title: "Reparo de Placas Inverter",
+    description:
+      "Diagnóstico avançado e conserto de placas eletrônicas de aparelhos inverter. Economize consertando a placa com especialista sem precisar comprar outro ar-condicionado.",
+  },
 ];
 
 // Testimonials
