@@ -89,8 +89,8 @@ export default function ServicesSection() {
             <div className="relative w-full max-w-[380px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2.5 bg-gradient-to-br from-emerald-500/10 to-blue-500/5 border border-emerald-100 shadow-[0_10px_35px_rgba(16,185,129,0.06)]">
               <div className="relative w-full h-full rounded-[18px] overflow-hidden">
                 <Image 
-                  src="/images/technician.png"
-                  alt="Técnico INVERTECH CLIMA higienizando ar-condicionado em Palmas"
+                  src="/images/cleaning-service.jpg"
+                  alt="Higienização de ar-condicionado com espuma de limpeza profunda da INVERTECH CLIMA"
                   fill
                   sizes="(max-w-768px) 100vw, 380px"
                   className="object-cover object-center"
