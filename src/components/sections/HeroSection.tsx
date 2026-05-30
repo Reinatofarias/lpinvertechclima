@@ -166,8 +166,8 @@ export default function HeroSection() {
               {/* Inner Wrapper */}
               <div className="relative w-full h-full rounded-[24px] overflow-hidden">
                 <Image
-                  src="/images/hero-ac.png"
-                  alt="Instalação Premium de Ar-Condicionado Inverter INVERTECH CLIMA"
+                  src="/images/service-install-1.jpg"
+                  alt="Instalação Premium de Ar-Condicionado Inverter pela INVERTECH CLIMA em Palmas"
                   fill
                   sizes="(max-w-768px) 100vw, 450px"
                   priority
