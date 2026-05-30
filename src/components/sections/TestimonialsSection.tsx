@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Star, Quote, CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { TESTIMONIALS, CTA_WHATSAPP, CTA_PHONE } from "@/lib/constants";
+import { TESTIMONIALS, CTA_WHATSAPP, CTA_PHONE, GOOGLE_REVIEWS_URL } from "@/lib/constants";
 import { staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
 export default function TestimonialsSection() {
@@ -49,9 +49,15 @@ export default function TestimonialsSection() {
               {/* Quote icon & Google Badge */}
               <div className="flex justify-between items-start mb-4">
                 <Quote className="w-8 h-8 text-blue-500/10" />
-                <div className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200/60 text-[10px] font-bold text-slate-500 uppercase tracking-wider shadow-[0_2px_8px_rgba(0,0,0,0.02)]">
+                <a 
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-[10px] font-bold text-slate-550 uppercase tracking-wider shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all hover:border-blue-500/30"
+                  title="Verificar no Google Reviews"
+                >
                   <span className="text-blue-600 font-extrabold">G</span>oogle
-                </div>
+                </a>
               </div>
 
               {/* Rating */}
@@ -96,6 +102,27 @@ export default function TestimonialsSection() {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* View all Google reviews button */}
+        <motion.div
+          className="mt-12 text-center"
+          variants={staggerItem}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+        >
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 hover:text-blue-600 hover:border-blue-500/30 hover:shadow-[0_8px_25px_rgba(37,99,235,0.06)] transition-all duration-300 active:scale-98"
+          >
+            <svg className="w-4 h-4 text-blue-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.24 10.285V13.4h6.887C18.2 15.614 15.645 18 12.24 18c-3.86 0-7-3.14-7-7s3.14-7 7-7c1.7 0 3.3.65 4.5 1.8l2.4-2.4C17.347 1.74 14.94.95 12.24.95c-5.523 0-10 4.477-10 10s4.477 10 10 10c5.772 0 9.6-4.06 9.6-9.78 0-.66-.06-1.285-.173-1.885H12.24z" />
+            </svg>
+            Ver todas as avaliações no Google Reviews
+          </a>
         </motion.div>
 
         {/* Final Conversion Block */}

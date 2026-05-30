@@ -14,6 +14,7 @@ export const COMPANY_NAME = "INVERTECH CLIMA";
 export const COMPANY_TAGLINE = "Tecnologia que transforma. Conforto que você sente.";
 export const COMPANY_LOCATION = "Palmas — Tocantins";
 export const COMPANY_YEAR = 2026;
+export const GOOGLE_REVIEWS_URL = "https://www.google.com/search?q=Eduardo+InverterTech&sca_esv=c4a0c574c6b77469&hl=pt-BR#lrd=0x933b35b9c42db38f:0x732989a548170e82,1,,,,";
 
 // Hero
 export const HERO_HEADLINE = "Climatização Inteligente Para Quem Não Aceita Passar Calor.";
