@@ -9,20 +9,27 @@ import Button from "@/components/ui/Button";
 import { SERVICES, WHATSAPP_NUMBER } from "@/lib/constants";
 import { staggerContainer, staggerItem, fadeInLeft, fadeInRight, viewportConfig } from "@/lib/animations";
 import { trackCtaClick } from "@/lib/analytics";
+import { useLeadModal } from "@/context/LeadModalContext";
 
 export default function ServicesSection() {
   const [bill, setBill] = useState(500); // monthly bill in BRL
+  const { openLeadModal, hasCapturedLead } = useLeadModal();
   const savingPercent = 0.60;
   const inverterBill = Math.round(bill * (1 - savingPercent));
   const monthlySaving = bill - inverterBill;
   const yearlySaving = monthlySaving * 12;
 
-  const handleSimulateCta = () => {
-    trackCtaClick("whatsapp", "simulator", `Quero economizar R$ ${monthlySaving}/mes`);
-  };
-
   const whatsappMessage = `Olá! Fiz a simulação no site e vi que posso economizar cerca de R$ ${monthlySaving} por mês na conta de luz de Palmas usando ar-condicionado Inverter. Gostaria de um orçamento para minha casa/empresa!`;
   const dynamicWhatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  const handleSimulateCta = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!hasCapturedLead) {
+      e.preventDefault();
+      openLeadModal(dynamicWhatsappUrl, "simulator-services");
+    } else {
+      trackCtaClick("whatsapp", "simulator", `Quero economizar R$ ${monthlySaving}/mes`);
+    }
+  };
 
   return (
     <section id="servicos" className="relative py-20 md:py-28 overflow-hidden bg-white">

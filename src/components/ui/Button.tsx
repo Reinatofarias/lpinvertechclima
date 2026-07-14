@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { trackCtaClick } from "@/lib/analytics";
 import { WHATSAPP_URL, PHONE_URL } from "@/lib/constants";
+import { useLeadModal } from "@/context/LeadModalContext";
 
 type ButtonVariant = "whatsapp" | "phone" | "outline" | "ghost";
 type ButtonSize = "default" | "lg" | "sm";
@@ -58,16 +59,42 @@ export default function Button({
   showArrow = false,
 }: ButtonProps) {
   const Icon = iconMap[variant];
+  const { openLeadModal, hasCapturedLead } = useLeadModal();
 
-  const handleClick = () => {
-    if (variant === "whatsapp" || variant === "phone") {
+  const defaultHref =
+    variant === "whatsapp"
+      ? WHATSAPP_URL
+      : variant === "phone"
+      ? PHONE_URL
+      : undefined;
+  const finalHref = href ?? defaultHref;
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+    if (variant === "phone") {
       trackCtaClick(
         variant,
         ctaLocation,
         typeof children === "string" ? children : variant
       );
+      onClick?.();
+      return;
     }
-    onClick?.();
+
+    if (variant === "whatsapp") {
+      if (!hasCapturedLead) {
+        e.preventDefault();
+        openLeadModal(finalHref || "", ctaLocation);
+      } else {
+        trackCtaClick(
+          variant,
+          ctaLocation,
+          typeof children === "string" ? children : variant
+        );
+        onClick?.();
+      }
+    } else {
+      onClick?.();
+    }
   };
 
   const buttonContent = (
@@ -89,14 +116,6 @@ export default function Button({
     ${fullWidth ? "w-full" : ""}
     ${className}
   `.trim();
-
-  const defaultHref =
-    variant === "whatsapp"
-      ? WHATSAPP_URL
-      : variant === "phone"
-      ? PHONE_URL
-      : undefined;
-  const finalHref = href ?? defaultHref;
 
   if (finalHref) {
     return (

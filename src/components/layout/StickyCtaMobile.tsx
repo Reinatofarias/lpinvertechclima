@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
 import { WHATSAPP_URL, PHONE_URL, CTA_WHATSAPP, CTA_PHONE } from "@/lib/constants";
 import { trackCtaClick } from "@/lib/analytics";
+import { useLeadModal } from "@/context/LeadModalContext";
 
 export default function StickyCtaMobile() {
   const [isVisible, setIsVisible] = useState(false);
+  const { openLeadModal, hasCapturedLead } = useLeadModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +40,14 @@ export default function StickyCtaMobile() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackCtaClick("whatsapp", "sticky", CTA_WHATSAPP)}
+              onClick={(e) => {
+                if (!hasCapturedLead) {
+                  e.preventDefault();
+                  openLeadModal(WHATSAPP_URL, "sticky-mobile");
+                } else {
+                  trackCtaClick("whatsapp", "sticky", CTA_WHATSAPP);
+                }
+              }}
               className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold text-sm shadow-[0_4px_15px_rgba(16,185,129,0.15)] active:scale-95 transition-transform"
             >
               <MessageCircle className="w-5 h-5" />

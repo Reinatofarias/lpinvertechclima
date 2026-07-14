@@ -8,6 +8,7 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICo
 export const PHONE_NUMBER = "+5563991129517";
 export const PHONE_URL = `tel:${PHONE_NUMBER}`;
 export const PHONE_DISPLAY = "(63) 99112-9517";
+export const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/77s8uaihwldx1z41jh68frsi0ko8hk1y";
 
 // Company
 export const COMPANY_NAME = "INVERTECH CLIMA";
