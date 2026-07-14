@@ -4,7 +4,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, User, Phone, MessageCircle, Loader2 } from "lucide-react";
 import { useLeadModal } from "@/context/LeadModalContext";
-import { MAKE_WEBHOOK_URL } from "@/lib/constants";
+import { MAKE_WEBHOOK_URL, PMOC_MAKE_WEBHOOK_URL } from "@/lib/constants";
 import { trackCtaClick } from "@/lib/analytics";
 import { getPersonalizedWhatsappUrl } from "@/lib/utils";
 
@@ -83,15 +83,20 @@ export default function LeadModal() {
     setIsLoading(true);
 
     try {
+      const isPmocPage = typeof window !== "undefined" && window.location.pathname.includes("pmoc-palmas");
+      const webhookUrl = isPmocPage ? PMOC_MAKE_WEBHOOK_URL : MAKE_WEBHOOK_URL;
+      const nomePagina = isPmocPage ? "PMOC Palmas" : "Principal";
+
       const payload = {
         nome: name.trim(),
         telefone: formattedPhone,
         data: new Date().toLocaleString("pt-BR", { timeZone: "America/Araguaina" }), // Palmas timezone
         origem: ctaLocation || "unknown",
         pagina_origem: typeof window !== "undefined" ? window.location.href : "",
+        nome_pagina: nomePagina,
       };
 
-      const response = await fetch(MAKE_WEBHOOK_URL, {
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

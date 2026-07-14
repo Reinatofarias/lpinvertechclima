@@ -17,6 +17,7 @@ export const PHONE_NUMBER = "+5563991129517";
 export const PHONE_URL = `tel:${PHONE_NUMBER}`;
 export const PHONE_DISPLAY = "(63) 99112-9517";
 export const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/77s8uaihwldx1z41jh68frsi0ko8hk1y";
+export const PMOC_MAKE_WEBHOOK_URL = "https://hook.us2.make.com/iehwp8vyol92478vg2imq8u8rsjib4p6";
 
 // Company
 export const COMPANY_NAME = "INVERTECH CLIMA";

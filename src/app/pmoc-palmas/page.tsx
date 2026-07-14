@@ -15,7 +15,8 @@ import {
   AlertTriangle,
   Zap,
   HelpCircle,
-  Search
+  Search,
+  Activity
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -68,10 +69,10 @@ export default function PMOCPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Hero content */}
               <div className="lg:col-span-7 text-center lg:text-left">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-[#0C2D6B] leading-[1.1] tracking-tight font-outfit mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-[#0C2D6B] leading-[1.15] tracking-tight font-outfit mb-6">
                   Sua empresa não deveria{" "}
-                  <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent block sm:inline mt-1 sm:mt-0">
-                    esperar o ar-condicionado quebrar
+                  <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent inline-block">
+                    esperar o <span className="whitespace-nowrap">ar-condicionado</span> quebrar
                   </span>{" "}
                   para começar a cuidar dele
                 </h1>
@@ -122,15 +123,6 @@ export default function PMOCPage() {
                     className="w-full sm:w-auto shadow-emerald-500/10"
                   >
                     Quero avaliar minha empresa
-                  </Button>
-                  <Button
-                    variant="whatsapp"
-                    size="lg"
-                    ctaLocation="pmoc-hero-secondary"
-                    href={PMOC_WHATSAPP_URL}
-                    className="w-full sm:w-auto bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 shadow-none hover:shadow-none"
-                  >
-                    Falar com a Invertech
                   </Button>
                 </div>
               </div>
@@ -185,7 +177,7 @@ export default function PMOCPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
-                O problema não começa quando o ar-condicionado para
+                O custo invisível: o problema <span className="bg-rose-50 text-rose-700 px-2.5 py-0.5 rounded-lg border border-rose-150 inline-block font-semibold text-lg md:text-xl align-middle">não começa</span> quando o <span className="whitespace-nowrap">ar-condicionado</span> para
               </h2>
             </div>
             
@@ -216,16 +208,118 @@ export default function PMOCPage() {
                 </div>
               </div>
 
-              {/* Right image column */}
+              {/* Right image/dashboard column */}
               <div className="lg:col-span-5 relative w-full flex items-center justify-center">
-                <div className="relative group w-full max-w-[400px] aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
-                  <Image
-                    src="/images/cleaning-service.jpg"
-                    alt="Higienização de ar-condicionado em Palmas-TO pela Invertech Clima"
-                    fill
-                    sizes="(max-w-768px) 100vw, 400px"
-                    className="object-cover object-center transition-transform duration-550 group-hover:scale-103"
-                  />
+                <div className="w-full max-w-[420px] bg-slate-950 text-slate-100 rounded-3xl p-6 border border-slate-800 shadow-[0_25px_60px_rgba(15,23,42,0.4)] font-inter relative overflow-hidden transition-all duration-555 hover:border-slate-750">
+                  {/* Neon top highlight */}
+                  <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500" />
+                  
+                  {/* Card Header */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                        Lei Federal 13.589/2018
+                      </span>
+                      <h4 className="font-outfit font-bold text-base text-slate-200 mt-2">
+                        Painel de Controle PMOC
+                      </h4>
+                    </div>
+                    {/* Pulsing Status */}
+                    <div className="flex items-center gap-1.5 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 text-emerald-400">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[10px] font-bold tracking-wide uppercase">Conforme</span>
+                    </div>
+                  </div>
+
+                  {/* Visual Chart - SVG */}
+                  <div className="bg-slate-900/50 rounded-2xl p-4 border border-slate-850/80 mb-6 relative">
+                    <div className="flex items-center justify-between text-[11px] text-slate-400 mb-3">
+                      <span>Projeção de Gastos (12 meses)</span>
+                      <span className="text-emerald-400 font-bold">-35% em Energia</span>
+                    </div>
+
+                    <div className="h-32 w-full relative">
+                      <svg className="w-full h-full" viewBox="0 0 300 120">
+                        <defs>
+                          <linearGradient id="gradient-preventive" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#10B981" stopOpacity="0.25"/>
+                            <stop offset="100%" stopColor="#10B981" stopOpacity="0.0"/>
+                          </linearGradient>
+                          <linearGradient id="gradient-corrective" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#EF4444" stopOpacity="0.25"/>
+                            <stop offset="100%" stopColor="#EF4444" stopOpacity="0.0"/>
+                          </linearGradient>
+                        </defs>
+                        
+                        {/* Grid Lines */}
+                        <line x1="0" y1="20" x2="300" y2="20" stroke="#1E293B" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="0" y1="60" x2="300" y2="60" stroke="#1E293B" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="0" y1="100" x2="300" y2="100" stroke="#1E293B" strokeWidth="1" strokeDasharray="4 4" />
+
+                        {/* Corrective Area & Line (Spikes) */}
+                        <path 
+                          d="M 0 100 Q 50 95 100 80 T 150 40 T 200 70 T 250 20 T 300 10 L 300 120 L 0 120 Z" 
+                          fill="url(#gradient-corrective)" 
+                        />
+                        <path 
+                          d="M 0 100 Q 50 95 100 80 T 150 40 T 200 70 T 250 20 T 300 10" 
+                          fill="none" 
+                          stroke="#EF4444" 
+                          strokeWidth="2" 
+                          strokeLinecap="round"
+                        />
+
+                        {/* Preventive Area & Line (Controlled & Low) */}
+                        <path 
+                          d="M 0 100 Q 50 90 100 85 T 150 82 T 200 80 T 250 78 T 300 75 L 300 120 L 0 120 Z" 
+                          fill="url(#gradient-preventive)" 
+                        />
+                        <path 
+                          d="M 0 100 Q 50 90 100 85 T 150 82 T 200 80 T 250 78 T 300 75" 
+                          fill="none" 
+                          stroke="#10B981" 
+                          strokeWidth="2.5" 
+                          strokeLinecap="round"
+                        />
+
+                        {/* Legend text */}
+                        <circle cx="215" cy="112" r="3" fill="#EF4444" />
+                        <text x="222" y="115" fill="#94A3B8" fontSize="8" fontFamily="sans-serif">Sem PMOC</text>
+
+                        <circle cx="150" cy="112" r="3" fill="#10B981" />
+                        <text x="157" y="115" fill="#94A3B8" fontSize="8" fontFamily="sans-serif">Com PMOC</text>
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Technical Indicators */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-slate-900 rounded-xl border border-slate-850">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                          <ShieldCheck className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-bold text-slate-200">Legalidade ANVISA</p>
+                          <p className="text-[9px] text-slate-400">Fiscalização Lei 13.589</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-emerald-400">Risco Zero</span>
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 bg-slate-900 rounded-xl border border-slate-850">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+                          <Activity className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-bold text-slate-200">Vida Útil</p>
+                          <p className="text-[9px] text-slate-400">Desempenho mecânico</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-semibold text-blue-400">+45% Durabilidade</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -239,7 +333,7 @@ export default function PMOCPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
               <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
-                Você passa a saber o que tem, o que precisa ser feito e quando agir
+                Gestão inteligente de climatização: saiba o que tem, o que precisa ser feito e quando agir
               </h2>
               <p className="text-slate-550 text-sm md:text-base mt-3 leading-relaxed">
                 Organizamos o levantamento técnico, o cronograma e a execução contínua dos serviços de manutenção. Conheça as principais atividades cobertas:
@@ -628,15 +722,6 @@ export default function PMOCPage() {
                 className="w-full sm:w-auto shadow-emerald-500/10"
               >
                 Quero avaliar minha empresa
-              </Button>
-              <Button
-                variant="whatsapp"
-                size="lg"
-                ctaLocation="pmoc-final-secondary"
-                href={PMOC_WHATSAPP_URL}
-                className="w-full sm:w-auto bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 shadow-none hover:shadow-none"
-              >
-                Falar com a Invertech
               </Button>
             </div>
           </div>
