@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { 
   Check, 
   X, 
@@ -130,45 +131,20 @@ export default function PMOCPage() {
                 </div>
               </div>
 
-              {/* Visual Tech Panel (Textual Trust Indicators / Minimal UI) */}
-              <div className="lg:col-span-5 flex flex-col justify-center">
-                <div className="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-[0_15px_40px_rgba(15,23,42,0.06)] relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none" />
-                  
-                  <h3 className="font-outfit font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
-                    <ShieldCheck className="w-5 h-5 text-blue-600" />
-                    Manutenção Profissional
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-150 flex items-start gap-3">
-                      <Clock className="w-5 h-5 text-cyan-600 shrink-0 mt-0.5" />
-                      <div>
-                        <h4 className="text-slate-800 text-xs font-bold font-outfit">Atendimento Programado</h4>
-                        <p className="text-[11px] text-slate-500 mt-0.5">Visitas técnicas agendadas sem interromper sua operação comercial.</p>
-                      </div>
-                    </div>
-                    
-                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-150 flex items-start gap-3">
-                      <ClipboardList className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                      <div>
-                        <h4 className="text-slate-800 text-xs font-bold font-outfit">Histórico Organizado</h4>
-                        <p className="text-[11px] text-slate-500 mt-0.5">Ficha técnica e histórico de higienização de cada equipamento.</p>
-                      </div>
-                    </div>
-
-                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-150 flex items-start gap-3">
-                      <Building2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                      <div>
-                        <h4 className="text-slate-800 text-xs font-bold font-outfit">Foco no Seu Negócio</h4>
-                        <p className="text-[11px] text-slate-500 mt-0.5">Nossa equipe gerencia a manutenção preventiva para você focar na sua empresa.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between text-slate-550 text-xs font-semibold">
-                    <span>Invertech Clima Palmas</span>
-                    <span>Técnicos Certificados</span>
+              {/* Right Column: Visual Composition with Image */}
+              <div className="lg:col-span-5 relative w-full flex items-center justify-center mt-6 lg:mt-0">
+                <div className="relative group w-full max-w-[450px] aspect-[4/5] sm:aspect-[4/4.5] lg:aspect-[4/5] rounded-[32px] p-3 bg-gradient-to-br from-blue-500/5 via-cyan-500/0 to-emerald-500/5 border border-slate-200 shadow-[0_15px_50px_rgba(0,0,0,0.05)] transition-all duration-700 hover:border-emerald-500/25">
+                  <div className="relative w-full h-full rounded-[24px] overflow-hidden">
+                    <Image
+                      src="/images/service-install-2.jpg"
+                      alt="Manutenção Preventiva e Planejamento de PMOC em Palmas-TO pela Invertech Clima"
+                      fill
+                      sizes="(max-w-768px) 100vw, 450px"
+                      priority
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Visual overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
                   </div>
                 </div>
               </div>
@@ -202,35 +178,51 @@ export default function PMOCPage() {
            3. PROBLEMA & SOLUÇÃO PMOC (Merged 3 and 4)
            ============================================ */}
         <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
                 O problema não começa quando o ar-condicionado para
               </h2>
             </div>
             
-            <div className="space-y-6 text-slate-650 leading-relaxed text-base md:text-lg">
-              <p>
-                Quando um equipamento deixa de funcionar, a empresa normalmente já perdeu tempo. Antes da parada, ele pode ter consumido mais energia, trabalhado com sujeira acumulada, apresentado pequenas falhas e prejudicado o conforto de clientes e colaboradores.
-              </p>
-              <p>
-                Sem um plano de manutenção, cada aparelho vira um problema isolado. A empresa deixa de saber com clareza quando ocorreu a última preventiva, quais aparelhos apresentam falhas recorrentes e quanto poderá gastar com consertos corretivos nos próximos meses.
-              </p>
-              <p>
-                <strong>PMOC</strong> significa Plano de Manutenção, Operação e Controle. Na prática, ele organiza o inventário técnico da sua climatização, define as atividades, estabelece periodicidades e registra os serviços realizados. A Invertech ajuda sua empresa a sair do improviso e construir um processo de manutenção mais previsível.
-              </p>
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              {/* Left text column */}
+              <div className="lg:col-span-7 space-y-6 text-slate-650 leading-relaxed text-base md:text-lg">
+                <p>
+                  Quando um equipamento deixa de funcionar, a empresa normalmente já perdeu tempo. Antes da parada, ele pode ter consumido mais energia, trabalhado com sujeira acumulada, apresentado pequenas falhas e prejudicado o conforto de clientes e colaboradores.
+                </p>
+                <p>
+                  Sem um plano de manutenção, cada aparelho vira um problema isolado. A empresa deixa de saber com clareza quando ocorreu a última preventiva, quais aparelhos apresentam falhas recorrentes e quanto poderá gastar com consertos corretivos nos próximos meses.
+                </p>
+                <p>
+                  <strong>PMOC</strong> significa Plano de Manutenção, Operação e Controle. Na prática, ele organiza o inventário técnico da sua climatização, define as atividades, estabelece periodicidades e registra os serviços realizados. A Invertech ajuda sua empresa a sair do improviso e construir um processo de manutenção mais previsível.
+                </p>
+                
+                {/* Block highlight */}
+                <div className="mt-8 p-6 bg-rose-50 rounded-2xl border border-rose-100 flex items-start gap-4">
+                  <AlertTriangle className="w-6 h-6 text-rose-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-outfit font-bold text-rose-950 text-base md:text-lg leading-snug">
+                      Manutenção sem planejamento custa mais caro. 
+                    </p>
+                    <p className="text-sm text-rose-900 mt-1">
+                      Um plano guardado sem execução não impede falhas, não cria histórico e não melhora a eficiência energética dos seus equipamentos.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-            {/* Block highlight */}
-            <div className="mt-8 p-6 bg-rose-50 rounded-2xl border border-rose-100 flex items-start gap-4">
-              <AlertTriangle className="w-6 h-6 text-rose-600 shrink-0 mt-0.5" />
-              <div>
-                <p className="font-outfit font-bold text-rose-950 text-base md:text-lg leading-snug">
-                  Manutenção sem planejamento custa mais caro. 
-                </p>
-                <p className="text-sm text-rose-900 mt-1">
-                  Um plano guardado sem execução não impede falhas, não cria histórico e não melhora a eficiência energética dos seus equipamentos.
-                </p>
+              {/* Right image column */}
+              <div className="lg:col-span-5 relative w-full flex items-center justify-center">
+                <div className="relative group w-full max-w-[400px] aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
+                  <Image
+                    src="/images/cleaning-service.jpg"
+                    alt="Higienização de ar-condicionado em Palmas-TO pela Invertech Clima"
+                    fill
+                    sizes="(max-w-768px) 100vw, 400px"
+                    className="object-cover object-center transition-transform duration-550 group-hover:scale-103"
+                  />
+                </div>
               </div>
             </div>
           </div>
