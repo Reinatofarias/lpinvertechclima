@@ -14,14 +14,13 @@ import {
   AlertTriangle,
   Zap,
   HelpCircle,
-  PhoneCall,
   Search
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
 import StickyCtaMobile from "@/components/layout/StickyCtaMobile";
-import { PMOC_WHATSAPP_URL, PHONE_URL, PHONE_DISPLAY } from "@/lib/constants";
+import { PMOC_WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "PMOC em Palmas-TO para Empresas | Invertech Clima",
@@ -200,7 +199,7 @@ export default function PMOCPage() {
         </section>
 
         {/* ============================================
-           3. SEÇÃO DO PROBLEMA
+           3. PROBLEMA & SOLUÇÃO PMOC (Merged 3 and 4)
            ============================================ */}
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -212,177 +211,212 @@ export default function PMOCPage() {
             
             <div className="space-y-6 text-slate-650 leading-relaxed text-base md:text-lg">
               <p>
-                Quando um equipamento deixa de funcionar, a empresa normalmente já perdeu tempo.
+                Quando um equipamento deixa de funcionar, a empresa normalmente já perdeu tempo. Antes da parada, ele pode ter consumido mais energia, trabalhado com sujeira acumulada, apresentado pequenas falhas e prejudicado o conforto de clientes e colaboradores.
               </p>
               <p>
-                Antes da parada, ele pode ter consumido mais energia, trabalhado com sujeira acumulada, apresentado pequenas falhas, perdido rendimento e prejudicado o conforto de clientes e colaboradores.
+                Sem um plano de manutenção, cada aparelho vira um problema isolado. A empresa deixa de saber com clareza quando ocorreu a última preventiva, quais aparelhos apresentam falhas recorrentes e quanto poderá gastar com consertos corretivos nos próximos meses.
               </p>
               <p>
-                Sem um plano de manutenção, cada aparelho vira um problema isolado. A empresa deixa de saber com clareza:
+                <strong>PMOC</strong> significa Plano de Manutenção, Operação e Controle. Na prática, ele organiza o inventário técnico da sua climatização, define as atividades, estabelece periodicidades e registra os serviços realizados. A Invertech ajuda sua empresa a sair do improviso e construir um processo de manutenção mais previsível.
               </p>
-
-              {/* Checklist list of problems */}
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 text-left font-medium text-slate-700">
-                <li className="flex items-start gap-2.5">
-                  <X className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                  <span>Quando foi realizada a última manutenção;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                  <span>Quais equipamentos apresentam falhas recorrentes;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                  <span>O que precisa ser corrigido primeiro;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                  <span>Quais serviços foram realmente executados;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                  <span>Quanto poderá gastar nos próximos meses;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <X className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                  <span>Se os registros estão organizados.</span>
-                </li>
-              </ul>
             </div>
 
             {/* Block highlight */}
             <div className="mt-8 p-6 bg-rose-50 rounded-2xl border border-rose-100 flex items-start gap-4">
               <AlertTriangle className="w-6 h-6 text-rose-600 shrink-0 mt-0.5" />
-              <p className="font-outfit font-bold text-rose-950 text-base md:text-lg leading-snug">
-                Manutenção sem planejamento quase sempre custa mais do que manutenção programada.
-              </p>
+              <div>
+                <p className="font-outfit font-bold text-rose-950 text-base md:text-lg leading-snug">
+                  Manutenção sem planejamento custa mais caro. 
+                </p>
+                <p className="text-sm text-rose-900 mt-1">
+                  Um plano guardado sem execução não impede falhas, não cria histórico e não melhora a eficiência energética dos seus equipamentos.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ============================================
-           4. SEÇÃO DE EXPLICAÇÃO DO PMOC
+           4. BENEFÍCIOS & ESCOPO DA INVERTECH (Merged 5, 10 and 11)
            ============================================ */}
         <section className="py-16 md:py-24 bg-slate-50 border-y border-slate-100">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
-                PMOC não é apenas um documento para guardar
-              </h2>
-            </div>
-            
-            <div className="space-y-6 text-slate-650 leading-relaxed text-base md:text-lg">
-              <p>
-                PMOC significa Plano de Manutenção, Operação e Controle.
-              </p>
-              <p>
-                Na prática, ele organiza os equipamentos, define as atividades de manutenção, estabelece periodicidades e registra os serviços realizados.
-              </p>
-              <p>
-                Mas o documento sozinho não resolve. O valor está em transformar o plano em uma rotina executada, registrada e acompanhada.
-              </p>
-              <p>
-                A Invertech ajuda sua empresa a sair do improviso e construir um processo de manutenção mais previsível.
-              </p>
-            </div>
-
-            {/* Block highlight */}
-            <div className="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-100 flex items-start gap-4">
-              <FileText className="w-6 h-6 text-blue-600 shrink-0 mt-0.5" />
-              <p className="font-outfit font-bold text-blue-950 text-base md:text-lg leading-snug">
-                Um plano guardado sem execução não impede falhas, não cria histórico e não melhora a manutenção dos equipamentos.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================
-           5. SEÇÃO DE VALOR (BENEFITS)
-           ============================================ */}
-        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 md:mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
               <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
                 Você passa a saber o que tem, o que precisa ser feito e quando agir
               </h2>
+              <p className="text-slate-550 text-sm md:text-base mt-3 leading-relaxed">
+                Organizamos o levantamento técnico, o cronograma e a execução contínua dos serviços de manutenção. Conheça as principais atividades cobertas:
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {/* Benefit 1 */}
-              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                  <Building2 className="w-5 h-5" />
-                </div>
+              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                 <div>
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                    <Building2 className="w-5 h-5" />
+                  </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Equipamentos mapeados</h3>
-                  <p className="text-sm text-slate-550 leading-relaxed">
-                    Identificação dos aparelhos, capacidades, localização e condições encontradas.
+                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                    Identificação dos aparelhos, inventário técnico detalhado das capacidades, localização física e condições encontradas nos compressores e evaporadoras.
                   </p>
                 </div>
               </div>
 
               {/* Benefit 2 */}
-              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                  <ClipboardList className="w-5 h-5" />
-                </div>
+              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                 <div>
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                    <ClipboardList className="w-5 h-5" />
+                  </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Manutenção planejada</h3>
-                  <p className="text-sm text-slate-550 leading-relaxed">
-                    Definição das atividades e periodicidades de acordo com a estrutura da empresa.
+                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                    Organização das atividades preventivas e determinação das periodicidades de limpeza, higienização e testes elétricos adequados para cada ambiente.
                   </p>
                 </div>
               </div>
 
               {/* Benefit 3 */}
-              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                  <FileText className="w-5 h-5" />
-                </div>
+              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                 <div>
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                    <FileText className="w-5 h-5" />
+                  </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Serviços registrados</h3>
-                  <p className="text-sm text-slate-550 leading-relaxed">
-                    Histórico das manutenções, ocorrências e necessidades identificadas.
+                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                    Histórico consolidado com fichas de atendimento e laudos técnicos sobre o que foi realizado, peças substituídas e necessidades identificadas.
                   </p>
                 </div>
               </div>
 
               {/* Benefit 4 */}
-              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                  <Search className="w-5 h-5" />
-                </div>
+              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                 <div>
-                  <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Problemas encontrados antes da parada</h3>
-                  <p className="text-sm text-slate-550 leading-relaxed">
-                    Falhas e necessidades de correção podem ser percebidas durante o acompanhamento preventivo.
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                    <Search className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Prevenção de falhas</h3>
+                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                    Identificação de desgastes em motores, vazamentos de gás refrigerante e acúmulo de sujeira antes que os aparelhos venham a parar de climatizar.
                   </p>
                 </div>
               </div>
 
               {/* Benefit 5 */}
-              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                  <Zap className="w-5 h-5" />
-                </div>
+              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                 <div>
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                    <Zap className="w-5 h-5" />
+                  </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Custos mais previsíveis</h3>
-                  <p className="text-sm text-slate-550 leading-relaxed">
-                    A empresa reduz a dependência de atendimentos emergenciais e consegue se organizar melhor.
+                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                    A empresa reduz drasticamente a dependência de reparos urgentes de última hora e de taxas de visitas emergenciais nos momentos mais quentes do ano.
                   </p>
                 </div>
               </div>
 
               {/* Benefit 6 */}
-              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                  <Users className="w-5 h-5" />
-                </div>
+              <div className="p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] flex flex-col justify-between">
                 <div>
-                  <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Um parceiro acompanhando</h3>
-                  <p className="text-sm text-slate-550 leading-relaxed">
-                    A Invertech pode cuidar do planejamento, da execução e do acompanhamento periódico da sua climatização.
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Acompanhamento contínuo</h3>
+                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                    Um parceiro técnico focado em manter seus aparelhos limpos e eficientes, com responsabilidade técnica assinada por engenheiro habilitado, quando aplicável.
                   </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Scope support footnotes */}
+            <div className="mt-8 text-center max-w-2xl mx-auto space-y-2 text-[11px] text-slate-500 leading-relaxed">
+              <p>
+                *O escopo final de atendimento será formalizado em proposta de acordo com a quantidade de equipamentos e a estrutura comercial.
+              </p>
+              <p>
+                *Peças, reparos de vazamento complexo e substituições corretivas de compressores ou placas são orçados separadamente.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================
+           5. PARA QUEM É O SERVIÇO & COMPARAÇÃO (Merged 6 and 8)
+           ============================================ */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B] mb-4">
+                Feito para empresas que não podem depender de improviso
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                O acompanhamento é indicado para estabelecimentos comerciais que possuem múltiplos equipamentos de ar-condicionado, circulação frequente de pessoas ou que necessitam assegurar um ar saudável.
+              </p>
+            </div>
+
+            {/* Layout Split: Left Segment tags, Right Comparison box */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-8">
+              {/* Left Column: Segments grid */}
+              <div className="lg:col-span-5 flex flex-col justify-between gap-4">
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    "Clínicas e consultórios",
+                    "Escritórios",
+                    "Escolas",
+                    "Academias",
+                    "Restaurantes",
+                    "Hotéis e pousadas",
+                    "Igrejas",
+                    "Lojas e comércios",
+                    "Supermercados",
+                    "Empresas com vários aparelhos"
+                  ].map((segment, index) => (
+                    <div 
+                      key={index}
+                      className="bg-slate-50 p-3 rounded-lg border border-slate-200/70 flex items-center gap-2"
+                    >
+                      <div className="w-4 h-4 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                        <Check className="w-3 h-3 stroke-[3]" />
+                      </div>
+                      <span className="text-[11px] sm:text-xs font-semibold text-slate-700">{segment}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[10px] text-slate-400 leading-relaxed mt-2 text-center lg:text-left">
+                  *A necessidade deve ser avaliada caso a caso considerando a capacidade em BTUs instalada no imóvel e as diretrizes do estabelecimento.
+                </p>
+              </div>
+
+              {/* Right Column: Side-by-side comparison */}
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Without Planning */}
+                <div className="p-5 bg-rose-50/50 border border-rose-100 rounded-xl flex flex-col gap-3">
+                  <h4 className="font-outfit font-bold text-rose-700 text-sm flex items-center gap-1.5 border-b border-rose-100/80 pb-2">
+                    <X className="w-4 h-4 text-rose-600 stroke-[3]" />
+                    Sem planejamento
+                  </h4>
+                  <ul className="space-y-2 text-xs text-rose-950">
+                    <li className="flex items-start gap-2"><span>•</span><span>Aparelhos lembrados só quando dão defeito</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Histórico de limpeza inexistente</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Contas de luz com picos de consumo</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Gastos de manutenção imprevisíveis</span></li>
+                  </ul>
+                </div>
+
+                {/* With Planning */}
+                <div className="p-5 bg-emerald-50/50 border border-emerald-100 rounded-xl flex flex-col gap-3">
+                  <h4 className="font-outfit font-bold text-emerald-800 text-sm flex items-center gap-1.5 border-b border-emerald-100/80 pb-2">
+                    <Check className="w-4 h-4 text-emerald-700 stroke-[3]" />
+                    Com acompanhamento
+                  </h4>
+                  <ul className="space-y-2 text-xs text-emerald-950">
+                    <li className="flex items-start gap-2"><span>•</span><span>Cronograma de visitas técnicas definido</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Serviços e laudos registrados</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Aparelhos trabalhando limpos e gastando menos</span></li>
+                    <li className="flex items-start gap-2"><span>•</span><span>Controle financeiro e planejamento anual</span></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -390,60 +424,9 @@ export default function PMOCPage() {
         </section>
 
         {/* ============================================
-           6. SEÇÃO DE PÚBLICO (TARGET)
+           6. SEÇÃO DE PROCESSO (HOW IT WORKS)
            ============================================ */}
-        <section className="py-16 md:py-24 bg-slate-50 border-y border-slate-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B] mb-4">
-                Feito para empresas que não podem depender de improviso
-              </h2>
-              <p className="text-base text-slate-600 leading-relaxed">
-                O serviço é indicado para estabelecimentos que possuem múltiplos equipamentos, circulação constante de pessoas ou necessidade de manter as manutenções organizadas.
-              </p>
-            </div>
-
-            {/* Segments grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-              {[
-                "Clínicas e consultórios",
-                "Escritórios",
-                "Escolas",
-                "Academias",
-                "Restaurantes",
-                "Hotéis e pousadas",
-                "Igrejas",
-                "Condomínios",
-                "Lojas",
-                "Supermercados",
-                "Centros comerciais",
-                "Empresas com vários aparelhos"
-              ].map((segment, index) => (
-                <div 
-                  key={index}
-                  className="bg-white p-4 rounded-xl border border-slate-200/70 shadow-[0_2px_8px_rgba(0,0,0,0.01)] flex items-center gap-3"
-                >
-                  <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
-                    <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-700">{segment}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Observation disclaimer */}
-            <div className="text-center max-w-3xl mx-auto">
-              <p className="text-xs text-slate-500 leading-relaxed">
-                *A necessidade e o formato do serviço devem ser avaliados considerando o tipo de estabelecimento, os equipamentos instalados, a capacidade do sistema e as exigências aplicáveis.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================
-           7. SEÇÃO DE PROCESSO (HOW IT WORKS)
-           ============================================ */}
-        <section className="py-16 md:py-24 bg-white">
+        <section className="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
@@ -451,58 +434,58 @@ export default function PMOCPage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
               {/* Process card 1 */}
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 relative flex flex-col justify-between">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
                 <div>
-                  <span className="font-outfit font-extrabold text-blue-600/20 text-4xl block mb-4">01</span>
-                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-2">Entendemos sua operação</h3>
+                  <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">01</span>
+                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Entendemos sua operação</h3>
                   <p className="text-xs text-slate-550 leading-relaxed">
-                    Coletamos informações sobre o estabelecimento, o segmento e a quantidade aproximada de equipamentos.
+                    Coletamos dados iniciais sobre seu estabelecimento, segmento e a contagem estimada de aparelhos.
                   </p>
                 </div>
               </div>
 
               {/* Process card 2 */}
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 relative flex flex-col justify-between">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
                 <div>
-                  <span className="font-outfit font-extrabold text-blue-600/20 text-4xl block mb-4">02</span>
-                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-2">Mapeamos os aparelhos</h3>
+                  <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">02</span>
+                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Mapeamos os aparelhos</h3>
                   <p className="text-xs text-slate-550 leading-relaxed">
-                    Identificamos localização, capacidade, modelo e condições encontradas.
+                    Avaliamos in loco o modelo, capacidade técnica, estado de conservação e localização de cada ar.
                   </p>
                 </div>
               </div>
 
               {/* Process card 3 */}
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 relative flex flex-col justify-between">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
                 <div>
-                  <span className="font-outfit font-extrabold text-blue-600/20 text-4xl block mb-4">03</span>
-                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-2">Organizamos o plano</h3>
+                  <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">03</span>
+                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Organizamos o plano</h3>
                   <p className="text-xs text-slate-550 leading-relaxed">
-                    Definimos atividades, periodicidades e prioridades de manutenção.
+                    Desenhamos as atividades necessárias e estruturamos as frequências de visitas preventivas.
                   </p>
                 </div>
               </div>
 
               {/* Process card 4 */}
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 relative flex flex-col justify-between">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
                 <div>
-                  <span className="font-outfit font-extrabold text-blue-600/20 text-4xl block mb-4">04</span>
-                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-2">Executamos manutenções</h3>
+                  <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">04</span>
+                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Executamos manutenções</h3>
                   <p className="text-xs text-slate-550 leading-relaxed">
-                    Os serviços contratados são realizados de acordo com o planejamento.
+                    Nossos técnicos qualificados efetuam a higienização profunda e as verificações mecânicas agendadas.
                   </p>
                 </div>
               </div>
 
               {/* Process card 5 */}
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 relative flex flex-col justify-between">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
                 <div>
-                  <span className="font-outfit font-extrabold text-blue-600/20 text-4xl block mb-4">05</span>
-                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-2">Histórico atualizado</h3>
+                  <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">05</span>
+                  <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Histórico atualizado</h3>
                   <p className="text-xs text-slate-550 leading-relaxed">
-                    As atividades realizadas ficam registradas para facilitar o acompanhamento dos equipamentos.
+                    Registramos tudo nas fichas de manutenção para que você mantenha o acompanhamento em dia.
                   </p>
                 </div>
               </div>
@@ -511,75 +494,15 @@ export default function PMOCPage() {
         </section>
 
         {/* ============================================
-           8. SEÇÃO DE COMPARAÇÃO (VS)
+           7. CTA INTERMEDIÁRIO
            ============================================ */}
-        <section className="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-white">
-                Você pode pagar para prevenir ou pagar mais caro para resolver às pressas
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {/* Without Planning */}
-              <div className="p-6 md:p-8 bg-slate-950/40 border border-slate-800 rounded-2xl flex flex-col gap-6">
-                <h3 className="font-outfit font-bold text-rose-400 text-xl border-b border-slate-800 pb-3 flex items-center gap-2">
-                  <X className="w-5 h-5 text-rose-500 stroke-[3.5]" />
-                  Sem planejamento
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Equipamentos lembrados apenas quando quebram;",
-                    "Manutenções sem histórico;",
-                    "Gastos inesperados;",
-                    "Chamados emergenciais;",
-                    "Dificuldade para identificar problemas recorrentes;",
-                    "Falta de previsibilidade."
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2.5 text-sm text-slate-400">
-                      <div className="w-1.5 h-1.5 rounded-full bg-slate-650 shrink-0 mt-2" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* With Planning */}
-              <div className="p-6 md:p-8 bg-[#0C2D6B]/30 border border-blue-900/40 rounded-2xl flex flex-col gap-6">
-                <h3 className="font-outfit font-bold text-emerald-400 text-xl border-b border-slate-800 pb-3 flex items-center gap-2">
-                  <Check className="w-5 h-5 text-emerald-400 stroke-[3.5]" />
-                  Com acompanhamento
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Cronograma definido;",
-                    "Equipamentos identificados;",
-                    "Serviços registrados;",
-                    "Problemas acompanhados;",
-                    "Mais previsibilidade;",
-                    "Decisões baseadas nas condições reais dos aparelhos."
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-2.5 text-sm text-slate-350">
-                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-2" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================
-           9. CTA INTERMEDIÁRIO
-           ============================================ */}
-        <section className="py-16 md:py-20 bg-slate-50 border-b border-slate-100 relative">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-extrabold font-outfit text-[#0C2D6B] mb-4">
+        <section className="py-16 md:py-20 bg-slate-900 text-white text-center relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-outfit text-white mb-4">
               Talvez sua empresa não precise trocar os equipamentos. Talvez precise começar a cuidar deles corretamente.
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
               Envie a quantidade aproximada de aparelhos e o segmento da empresa. A equipe da Invertech fará uma avaliação inicial da sua necessidade.
             </p>
             <Button
@@ -595,247 +518,92 @@ export default function PMOCPage() {
         </section>
 
         {/* ============================================
-           10. SEÇÃO DA OFERTA (SCOPE)
+           8. DÚVIDAS & FAQ (Merged 12 and 13)
            ============================================ */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
-                O que a Invertech pode cuidar para sua empresa
-              </h2>
-            </div>
-
-            {/* Scope Grid */}
-            <div className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200/80 shadow-[0_4px_25px_rgba(0,0,0,0.02)] mb-8">
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left font-medium text-slate-750">
-                {[
-                  "Avaliação inicial",
-                  "Levantamento dos equipamentos",
-                  "Identificação dos aparelhos",
-                  "Inventário técnico",
-                  "Organização das atividades",
-                  "Cronograma preventivo",
-                  "Manutenções programadas",
-                  "Registros dos serviços",
-                  "Relatórios de atendimento",
-                  "Identificação de correções",
-                  "Acompanhamento periódico",
-                  "Responsabilidade técnica (quando aplicável)"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                    </div>
-                    <span className="text-sm font-semibold text-slate-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Details paragraph */}
-            <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-center">
-              <p>
-                *O escopo final será definido de acordo com a estrutura da empresa, a quantidade de equipamentos e as necessidades encontradas.
-              </p>
-              <p>
-                *Peças, reparos corretivos, substituições e serviços adicionais poderão ser orçados separadamente.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================
-           11. SEÇÃO SOBRE MANUTENÇÃO RECORRENTE
-           ============================================ */}
-        <section className="py-16 md:py-24 bg-slate-50 border-y border-slate-100">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
-                A manutenção não termina depois da primeira visita
-              </h2>
-            </div>
-            
-            <div className="space-y-6 text-slate-650 leading-relaxed text-base md:text-lg mb-8">
-              <p>
-                Depois do levantamento inicial, a Invertech pode acompanhar periodicamente os equipamentos, executar as manutenções programadas e manter o histórico dos serviços atualizado.
-              </p>
-              <p>
-                Isso permite que a empresa identifique necessidades antes que os equipamentos parem e organize melhor os custos da climatização.
-              </p>
-            </div>
-
-            {/* Checklist of preventive benefits */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 font-semibold text-slate-755 text-center">
-              {[
-                "Manutenções programadas",
-                "Histórico atualizado",
-                "Menos improvisos",
-                "Identificação de falhas",
-                "Planejamento de correções",
-                "Maior previsibilidade",
-                "Acompanhamento contínuo"
-              ].map((benefit, index) => (
-                <div key={index} className="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-[0_2px_5px_rgba(0,0,0,0.01)]">
-                  <span className="text-xs sm:text-sm text-slate-700">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================
-           12. SEÇÃO DE OBJEÇÕES
-           ============================================ */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
-                As dúvidas que normalmente aparecem antes de organizar a manutenção
-              </h2>
-            </div>
-
-            {/* Objection list */}
-            <div className="space-y-8">
-              {/* Q1 */}
-              <div className="border-l-4 border-blue-500 pl-4 md:pl-6">
-                <h4 className="font-outfit font-extrabold text-slate-900 text-base md:text-lg mb-2">
-                  “Minha empresa nunca teve PMOC. Por que deveria fazer isso agora?”
-                </h4>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                  Porque a ausência de problemas visíveis não significa que os equipamentos estejam sendo bem acompanhados. A manutenção improvisada funciona até o dia em que vários problemas aparecem ao mesmo tempo. Organizar agora permite mapear o cenário, identificar prioridades e construir um plano adequado à realidade da empresa.
-                </p>
-              </div>
-
-              {/* Q2 */}
-              <div className="border-l-4 border-blue-500 pl-4 md:pl-6">
-                <h4 className="font-outfit font-extrabold text-slate-900 text-base md:text-lg mb-2">
-                  “Tenho poucos aparelhos. Ainda faz sentido?”
-                </h4>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                  A quantidade é apenas um dos pontos avaliados. O segmento, o uso do ambiente, a capacidade dos sistemas e a necessidade de manter registros também devem ser considerados. A Invertech pode realizar uma avaliação inicial antes de recomendar qualquer serviço.
-                </p>
-              </div>
-
-              {/* Q3 */}
-              <div className="border-l-4 border-blue-500 pl-4 md:pl-6">
-                <h4 className="font-outfit font-extrabold text-slate-900 text-base md:text-lg mb-2">
-                  “Já faço limpeza dos aparelhos.”
-                </h4>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                  A limpeza é importante, mas não representa todo o acompanhamento. Um plano de manutenção também considera periodicidade, funcionamento, condições dos componentes, registros e necessidades de correção.
-                </p>
-              </div>
-
-              {/* Q4 */}
-              <div className="border-l-4 border-blue-500 pl-4 md:pl-6">
-                <h4 className="font-outfit font-extrabold text-slate-900 text-base md:text-lg mb-2">
-                  “Isso vai gerar mais um custo para a empresa?”
-                </h4>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                  O serviço deve ser comparado com o custo de paradas, reparos emergenciais, perda de rendimento e falta de previsibilidade. O objetivo é organizar a manutenção para que a empresa tome decisões antes que os problemas se tornem maiores.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================
-           13. FAQ SECTION (details / summary)
-           ============================================ */}
-        <section className="py-16 md:py-24 bg-slate-50 border-y border-slate-100">
+        <section className="py-16 md:py-24 bg-white border-b border-slate-100">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
-                Perguntas frequentes sobre PMOC
+                Perguntas frequentes e dúvidas sobre PMOC
               </h2>
             </div>
 
             <div className="space-y-4">
               {/* FAQ 1 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>O que significa PMOC?</span>
+              <details className="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-100/60 transition-colors">
+                  <span>O que significa PMOC e por que minha empresa deveria fazer isso agora?</span>
                   <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
                 </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>PMOC significa Plano de Manutenção, Operação e Controle. Ele organiza informações, atividades, periodicidades, responsáveis e registros relacionados aos sistemas de climatização.</p>
+                <div className="p-5 pt-0 border-t border-slate-150 text-sm text-slate-600 leading-relaxed bg-white">
+                  <p className="mb-2">PMOC significa Plano de Manutenção, Operação e Controle. Ele serve para planejar, gerenciar e documentar as atividades de higienização e monitoramento da climatização.</p>
+                  <p>Adotar o planejamento de manutenção preventiva agora evita o acúmulo de falhas, diminui a perda de produtividade dos colaboradores em dias quentes e previne surpresas financeiras causadas por substituições caras de compressores de última hora.</p>
                 </div>
               </details>
 
               {/* FAQ 2 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>PMOC é apenas um documento?</span>
+              <details className="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-100/60 transition-colors">
+                  <span>Tenho poucos aparelhos na minha empresa. Ainda faz sentido contratar?</span>
                   <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
                 </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>Não. O documento orienta o planejamento, mas as manutenções e inspeções previstas precisam ser executadas e registradas.</p>
+                <div className="p-5 pt-0 border-t border-slate-150 text-sm text-slate-600 leading-relaxed bg-white">
+                  <p>Sim. A quantidade total é apenas um dos fatores. A necessidade técnica, a finalidade do ambiente (como salas cirúrgicas, clínicas médicas ou escritórios fechados), a carga térmica instalada e o cuidado básico com o ar que os ocupantes respiram justificam o acompanhamento preventivo. A Invertech realiza uma triagem inicial para indicar o formato adequado de serviço.</p>
                 </div>
               </details>
 
               {/* FAQ 3 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>Toda empresa precisa de PMOC?</span>
+              <details className="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-100/60 transition-colors">
+                  <span>Já faço a limpeza e higienização periódica dos aparelhos. É suficiente?</span>
                   <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
                 </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>A necessidade e o formato do atendimento devem ser avaliados considerando o tipo de estabelecimento, a utilização do ambiente, a capacidade dos sistemas instalados e as exigências aplicáveis.</p>
+                <div className="p-5 pt-0 border-t border-slate-150 text-sm text-slate-600 leading-relaxed bg-white">
+                  <p>A limpeza do filtro de tela simples é importante, mas não cobre todas as etapas de monitoramento do sistema de climatização. Um plano preventivo engloba a higienização de bandejas de condensado, verificação de dreno para evitar vazamentos e monitoramento do circuito de fluido refrigerante e amperagem, gerando um histórico confiável.</p>
                 </div>
               </details>
 
               {/* FAQ 4 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>O limite de 60.000 BTU determina se a empresa precisa de PMOC?</span>
+              <details className="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-100/60 transition-colors">
+                  <span>Organizar a manutenção vai gerar um custo adicional alto?</span>
                   <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
                 </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>A capacidade total do sistema é um dos elementos considerados na avaliação e pode influenciar a necessidade de responsável técnico habilitado. O enquadramento deve ser analisado conforme a estrutura do estabelecimento e as regras aplicáveis.</p>
+                <div className="p-5 pt-0 border-t border-slate-150 text-sm text-slate-600 leading-relaxed bg-white">
+                  <p>Ao planejar visitas preventivas, sua empresa diminui drasticamente a quantidade de correções emergenciais rápidas, taxas extras de visitas urgentes fora do horário comercial, vazamentos de gás constantes e o desgaste prematuro que encurta a vida útil dos aparelhos de ar-condicionado.</p>
                 </div>
               </details>
 
               {/* FAQ 5 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>A Invertech também realiza as manutenções?</span>
+              <details className="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-100/60 transition-colors">
+                  <span>Toda empresa precisa de PMOC ou existe um limite de BTU?</span>
                   <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
                 </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>Sim. Além do levantamento e do planejamento, a Invertech pode executar manutenções preventivas, higienizações, inspeções e reparos necessários nos equipamentos.</p>
+                <div className="p-5 pt-0 border-t border-slate-150 text-sm text-slate-600 leading-relaxed bg-white">
+                  <p>A necessidade técnica e o enquadramento do serviço variam de acordo com as especificações físicas dos aparelhos do local, a capacidade térmica global e as regras locais aplicáveis ao tipo de estabelecimento comercial. A equipe técnica da Invertech auxilia na análise técnica individual sem compromisso.</p>
                 </div>
               </details>
 
               {/* FAQ 6 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>Peças e reparos estão incluídos?</span>
+              <details className="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-100/60 transition-colors">
+                  <span>A Invertech também realiza as manutenções e o fornecimento de peças?</span>
                   <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
                 </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>A inclusão dependerá da proposta contratada. Peças, reparos corretivos e substituições poderão ser orçados separadamente.</p>
+                <div className="p-5 pt-0 border-t border-slate-150 text-sm text-slate-600 leading-relaxed bg-white">
+                  <p>Sim. Além da análise de escopo e planejamento do plano, realizamos instalações técnicas qualificadas, manutenções mecânicas preventivas, higienizações completas por duto/bandeja e correções mecânicas. Se peças de reposição ou reparos extras forem necessários, fornecemos propostas de orçamento separadas.</p>
                 </div>
               </details>
 
               {/* FAQ 7 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>O atendimento é realizado em Palmas?</span>
+              <details className="group bg-slate-50 rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-100/60 transition-colors">
+                  <span>Como funciona o acompanhamento periódico com contrato?</span>
                   <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
                 </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>Sim. A Invertech atende empresas e estabelecimentos comerciais em Palmas e região.</p>
-                </div>
-              </details>
-
-              {/* FAQ 8 */}
-              <details className="group bg-white rounded-xl border border-slate-200 overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 text-sm sm:text-base font-bold font-outfit text-slate-800 cursor-pointer select-none hover:bg-slate-50 transition-colors">
-                  <span>É possível contratar acompanhamento periódico?</span>
-                  <ChevronDown className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform duration-200" />
-                </summary>
-                <div className="p-5 pt-0 border-t border-slate-100 text-sm text-slate-600 leading-relaxed bg-slate-50/50">
-                  <p>Sim. O atendimento pode incluir manutenções programadas, atualização dos registros e acompanhamento contínuo dos equipamentos, conforme a proposta definida para a empresa.</p>
+                <div className="p-5 pt-0 border-t border-slate-150 text-sm text-slate-600 leading-relaxed bg-white">
+                  <p>Nossa equipe agenda as datas das vistorias e manutenções periódicas ao longo dos meses. Em cada visita, realizamos os procedimentos técnicos preventivos contratados, atualizamos as respectivas fichas de registro de cada ar-condicionado e emitimos o relatório correspondente para a gerência da empresa.</p>
                 </div>
               </details>
             </div>
@@ -843,14 +611,14 @@ export default function PMOCPage() {
         </section>
 
         {/* ============================================
-           14. CTA FINAL
+           9. CTA FINAL
            ============================================ */}
-        <section className="py-16 md:py-24 bg-white border-t border-slate-100 text-center relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-white text-center relative overflow-hidden">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <h2 className="text-2xl md:text-4xl font-extrabold font-outfit text-[#0C2D6B] mb-4">
               O próximo problema do seu ar-condicionado não precisa pegar sua empresa de surpresa
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-650 max-w-xl mx-auto mb-8 leading-relaxed">
               Converse com a Invertech e descubra como organizar os equipamentos, planejar as manutenções e manter um histórico do que foi realizado.
             </p>
             
