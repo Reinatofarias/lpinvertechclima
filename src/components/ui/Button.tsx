@@ -9,6 +9,7 @@ import {
 import { trackCtaClick } from "@/lib/analytics";
 import { WHATSAPP_URL, PHONE_URL } from "@/lib/constants";
 import { useLeadModal } from "@/context/LeadModalContext";
+import { getPersonalizedWhatsappUrl } from "@/lib/utils";
 
 type ButtonVariant = "whatsapp" | "phone" | "outline" | "ghost";
 type ButtonSize = "default" | "lg" | "sm";
@@ -85,12 +86,31 @@ export default function Button({
         e.preventDefault();
         openLeadModal(finalHref || "", ctaLocation);
       } else {
+        const savedName = typeof window !== "undefined" ? localStorage.getItem("invertech_lead_name") : null;
+        let redirectUrl = finalHref || "";
+        if (savedName) {
+          redirectUrl = getPersonalizedWhatsappUrl(redirectUrl, savedName);
+        }
+
         trackCtaClick(
           variant,
           ctaLocation,
           typeof children === "string" ? children : variant
         );
-        onClick?.();
+
+        if (redirectUrl !== finalHref) {
+          e.preventDefault();
+          const link = document.createElement("a");
+          link.href = redirectUrl;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.style.display = "none";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          onClick?.();
+        }
       }
     } else {
       onClick?.();

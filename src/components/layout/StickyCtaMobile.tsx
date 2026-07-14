@@ -6,6 +6,7 @@ import { MessageCircle, Phone } from "lucide-react";
 import { WHATSAPP_URL, PHONE_URL, CTA_WHATSAPP, CTA_PHONE } from "@/lib/constants";
 import { trackCtaClick } from "@/lib/analytics";
 import { useLeadModal } from "@/context/LeadModalContext";
+import { getPersonalizedWhatsappUrl } from "@/lib/utils";
 
 export default function StickyCtaMobile() {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,7 +46,25 @@ export default function StickyCtaMobile() {
                   e.preventDefault();
                   openLeadModal(WHATSAPP_URL, "sticky-mobile");
                 } else {
+                  const savedName = typeof window !== "undefined" ? localStorage.getItem("invertech_lead_name") : null;
+                  let redirectUrl = WHATSAPP_URL;
+                  if (savedName) {
+                    redirectUrl = getPersonalizedWhatsappUrl(redirectUrl, savedName);
+                  }
+
                   trackCtaClick("whatsapp", "sticky", CTA_WHATSAPP);
+
+                  if (redirectUrl !== WHATSAPP_URL) {
+                    e.preventDefault();
+                    const link = document.createElement("a");
+                    link.href = redirectUrl;
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+                    link.style.display = "none";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }
                 }
               }}
               className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold text-sm shadow-[0_4px_15px_rgba(16,185,129,0.15)] active:scale-95 transition-transform"

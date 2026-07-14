@@ -6,6 +6,7 @@ import { X, User, Phone, MessageCircle, Loader2 } from "lucide-react";
 import { useLeadModal } from "@/context/LeadModalContext";
 import { MAKE_WEBHOOK_URL } from "@/lib/constants";
 import { trackCtaClick } from "@/lib/analytics";
+import { getPersonalizedWhatsappUrl } from "@/lib/utils";
 
 export default function LeadModal() {
   const { isOpen, targetUrl, ctaLocation, closeLeadModal, setHasCapturedLead } = useLeadModal();
@@ -81,15 +82,19 @@ export default function LeadModal() {
       
       // 2. Save capture state in localStorage
       localStorage.setItem("invertech_lead_captured", "true");
+      localStorage.setItem("invertech_lead_name", name.trim());
       setHasCapturedLead(true);
 
       // 3. Trigger GTM tracking when the lead is actually dispatched to WhatsApp
       trackCtaClick("whatsapp", ctaLocation || "modal", "WhatsApp Lead Form Submitted");
 
-      // 4. Open WhatsApp URL in a new tab using a temporary link element to ensure GTM Link Click trigger fires (wa.me click event)
+      // 4. Personalize the WhatsApp URL with the user's name
+      const personalizedUrl = getPersonalizedWhatsappUrl(targetUrl, name.trim());
+
+      // 5. Open WhatsApp URL in a new tab using a temporary link element to ensure GTM Link Click trigger fires (wa.me click event)
       if (typeof window !== "undefined") {
         const link = document.createElement("a");
-        link.href = targetUrl;
+        link.href = personalizedUrl;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
         link.style.display = "none";
@@ -98,7 +103,7 @@ export default function LeadModal() {
         document.body.removeChild(link);
       }
 
-      // 5. Close the modal
+      // 6. Close the modal
       closeLeadModal();
     } catch (err) {
       console.error("Erro ao enviar webhook do Make:", err);
