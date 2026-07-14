@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 interface LeadModalContextType {
   isOpen: boolean;
@@ -20,18 +21,22 @@ export function LeadModalProvider({ children }: { children: React.ReactNode }) {
   const [ctaLocation, setCtaLocation] = useState("");
   const [hasCapturedLead, setHasCapturedLead] = useState(false);
 
+  const pathname = usePathname();
+
   useEffect(() => {
-    // Check if user has already sent lead in localStorage AND has their name saved
-    const captured = localStorage.getItem("invertech_lead_captured") === "true";
+    const isPmocPage = pathname.includes("pmoc-palmas");
+    const storageKey = isPmocPage ? "invertech_lead_captured_pmoc" : "invertech_lead_captured_main";
+    
+    const captured = localStorage.getItem(storageKey) === "true";
     const savedName = localStorage.getItem("invertech_lead_name");
     
     if (captured && !savedName) {
-      localStorage.removeItem("invertech_lead_captured");
+      localStorage.removeItem(storageKey);
       setHasCapturedLead(false);
     } else {
       setHasCapturedLead(captured && !!savedName);
     }
-  }, []);
+  }, [pathname]);
 
   const openLeadModal = (whatsappUrl: string, location: string) => {
     setTargetUrl(whatsappUrl);

@@ -105,7 +105,8 @@ export default function LeadModal() {
       });
       
       // 2. Save capture state in localStorage
-      localStorage.setItem("invertech_lead_captured", "true");
+      const storageKey = isPmocPage ? "invertech_lead_captured_pmoc" : "invertech_lead_captured_main";
+      localStorage.setItem(storageKey, "true");
       localStorage.setItem("invertech_lead_name", name.trim());
       setHasCapturedLead(true);
 
