@@ -5,6 +5,14 @@
 // Contact
 export const WHATSAPP_NUMBER = "5563991129517";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Gostaria de solicitar um orçamento de climatização.")}`;
+export const PMOC_WHATSAPP_TEMPLATE = `Olá! Gostaria de solicitar uma avaliação de PMOC para minha empresa.
+
+Nome:
+Empresa:
+Segmento:
+Quantidade aproximada de aparelhos:
+Localização:`;
+export const PMOC_WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PMOC_WHATSAPP_TEMPLATE)}`;
 export const PHONE_NUMBER = "+5563991129517";
 export const PHONE_URL = `tel:${PHONE_NUMBER}`;
 export const PHONE_DISPLAY = "(63) 99112-9517";

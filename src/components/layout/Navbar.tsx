@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Logo from "@/components/ui/Logo";
@@ -8,6 +9,8 @@ import Button from "@/components/ui/Button";
 import { NAV_LINKS, COMPANY_NAME, CTA_WHATSAPP } from "@/lib/constants";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -31,7 +34,16 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
+  const getHref = (href: string) => {
+    if (isHome) return href;
+    return href.startsWith("#") ? `/${href}` : href;
+  };
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!isHome) {
+      setIsMobileMenuOpen(false);
+      return; // Allow native navigation to /#id
+    }
     e.preventDefault();
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
@@ -58,7 +70,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a
-              href="#hero"
+              href={getHref("#hero")}
               onClick={(e) => handleNavClick(e, "#hero")}
               className="flex items-center gap-2 shrink-0"
             >
@@ -70,7 +82,7 @@ export default function Navbar() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={getHref(link.href)}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className="relative text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-300 group"
                 >
@@ -114,7 +126,7 @@ export default function Navbar() {
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
-                  href={link.href}
+                  href={getHref(link.href)}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className="text-2xl font-semibold text-slate-700 hover:text-slate-900 transition-colors font-outfit"
                   initial={{ opacity: 0, y: 20 }}

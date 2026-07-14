@@ -1,14 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Phone } from "lucide-react";
-import { WHATSAPP_URL, PHONE_URL, CTA_WHATSAPP, CTA_PHONE } from "@/lib/constants";
+import { WHATSAPP_URL, PHONE_URL, CTA_WHATSAPP, CTA_PHONE, PMOC_WHATSAPP_URL } from "@/lib/constants";
 import { trackCtaClick } from "@/lib/analytics";
 import { useLeadModal } from "@/context/LeadModalContext";
 import { getPersonalizedWhatsappUrl } from "@/lib/utils";
 
 export default function StickyCtaMobile() {
+  const pathname = usePathname();
+  const isPmocPage = pathname === "/pmoc-palmas";
   const [isVisible, setIsVisible] = useState(false);
   const { openLeadModal, hasCapturedLead } = useLeadModal();
 
@@ -38,23 +41,26 @@ export default function StickyCtaMobile() {
           >
             {/* WhatsApp Button */}
             <a
-              href={WHATSAPP_URL}
+              href={isPmocPage ? PMOC_WHATSAPP_URL : WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => {
+                const currentWhatsappUrl = isPmocPage ? PMOC_WHATSAPP_URL : WHATSAPP_URL;
+                const currentCtaLocation = isPmocPage ? "sticky-mobile-pmoc" : "sticky-mobile";
+                
                 if (!hasCapturedLead) {
                   e.preventDefault();
-                  openLeadModal(WHATSAPP_URL, "sticky-mobile");
+                  openLeadModal(currentWhatsappUrl, currentCtaLocation);
                 } else {
                   const savedName = typeof window !== "undefined" ? localStorage.getItem("invertech_lead_name") : null;
-                  let redirectUrl = WHATSAPP_URL;
+                  let redirectUrl = currentWhatsappUrl;
                   if (savedName) {
                     redirectUrl = getPersonalizedWhatsappUrl(redirectUrl, savedName);
                   }
 
-                  trackCtaClick("whatsapp", "sticky", CTA_WHATSAPP);
+                  trackCtaClick("whatsapp", currentCtaLocation, CTA_WHATSAPP);
 
-                  if (redirectUrl !== WHATSAPP_URL) {
+                  if (redirectUrl !== currentWhatsappUrl) {
                     e.preventDefault();
                     const link = document.createElement("a");
                     link.href = redirectUrl;
