@@ -28,9 +28,14 @@ export default function LeadModal() {
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
     // Format Brazilian phone: (XX) XXXXX-XXXX or (XX) XXXX-XXXX
-    const digits = rawValue.replace(/\D/g, "");
-    let formatted = "";
+    let digits = rawValue.replace(/\D/g, "");
     
+    // Remove country code 55 if they autofilled or pasted a number with country code
+    if (digits.startsWith("55") && digits.length >= 12) {
+      digits = digits.slice(2);
+    }
+    
+    let formatted = "";
     if (digits.length === 0) {
       formatted = "";
     } else if (digits.length <= 2) {
@@ -55,18 +60,32 @@ export default function LeadModal() {
       return;
     }
 
-    const numericPhone = phone.replace(/\D/g, "");
-    if (numericPhone.length < 10) {
-      setError("Por favor, insira um telefone válido com DDD.");
+    let digits = phone.replace(/\D/g, "");
+    
+    // Remove country code 55 if present (e.g. if skipped from UI somehow)
+    if (digits.startsWith("55") && digits.length >= 12) {
+      digits = digits.slice(2);
+    }
+
+    // Force 9-digit mobile number format if they entered 10 digits (DDD + 8 digits)
+    if (digits.length === 10) {
+      digits = digits.slice(0, 2) + "9" + digits.slice(2);
+    }
+
+    if (digits.length < 11) {
+      setError("Por favor, insira um telefone celular válido com DDD.");
       return;
     }
+
+    // Standard normalized format: (XX) XXXXX-XXXX
+    const formattedPhone = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
 
     setIsLoading(true);
 
     try {
       const payload = {
         nome: name.trim(),
-        telefone: phone,
+        telefone: formattedPhone,
         data: new Date().toLocaleString("pt-BR", { timeZone: "America/Araguaina" }), // Palmas timezone
         origem: ctaLocation || "unknown",
         pagina_origem: typeof window !== "undefined" ? window.location.href : "",
