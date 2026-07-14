@@ -21,9 +21,16 @@ export function LeadModalProvider({ children }: { children: React.ReactNode }) {
   const [hasCapturedLead, setHasCapturedLead] = useState(false);
 
   useEffect(() => {
-    // Check if user has already sent lead in localStorage
+    // Check if user has already sent lead in localStorage AND has their name saved
     const captured = localStorage.getItem("invertech_lead_captured") === "true";
-    setHasCapturedLead(captured);
+    const savedName = localStorage.getItem("invertech_lead_name");
+    
+    if (captured && !savedName) {
+      localStorage.removeItem("invertech_lead_captured");
+      setHasCapturedLead(false);
+    } else {
+      setHasCapturedLead(captured && !!savedName);
+    }
   }, []);
 
   const openLeadModal = (whatsappUrl: string, location: string) => {
