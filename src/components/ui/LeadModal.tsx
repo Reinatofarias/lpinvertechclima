@@ -63,13 +63,12 @@ export default function LeadModal() {
     setIsLoading(true);
 
     try {
-      // 1. Send data to Make Webhook
       const payload = {
         nome: name.trim(),
         telefone: phone,
+        data: new Date().toLocaleString("pt-BR", { timeZone: "America/Araguaina" }), // Palmas timezone
         origem: ctaLocation || "unknown",
         pagina_origem: typeof window !== "undefined" ? window.location.href : "",
-        data_hora: new Date().toLocaleString("pt-BR", { timeZone: "America/Araguaina" }), // Palmas timezone
       };
 
       const response = await fetch(MAKE_WEBHOOK_URL, {
@@ -78,10 +77,7 @@ export default function LeadModal() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
-        mode: "no-cors", // Use no-cors to prevent CORS preflight blocking in landing pages, common for webhooks.
       });
-
-      // Note: with 'no-cors', status is 0 and we can't read response content, but the request still reaches the webhook successfully.
       
       // 2. Save capture state in localStorage
       localStorage.setItem("invertech_lead_captured", "true");
