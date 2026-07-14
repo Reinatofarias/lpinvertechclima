@@ -68,8 +68,12 @@ export default function PMOCPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Hero content */}
               <div className="lg:col-span-7 text-center lg:text-left">
-                <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold leading-tight tracking-tight font-outfit text-[#0C2D6B] mb-6">
-                  Sua empresa não deveria esperar o ar-condicionado quebrar para começar a cuidar dele
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-[#0C2D6B] leading-[1.1] tracking-tight font-outfit mb-6">
+                  Sua empresa não deveria{" "}
+                  <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent block sm:inline mt-1 sm:mt-0">
+                    esperar o ar-condicionado quebrar
+                  </span>{" "}
+                  para começar a cuidar dele
                 </h1>
                 
                 <p className="text-base sm:text-lg text-slate-650 font-medium leading-relaxed mb-6">
