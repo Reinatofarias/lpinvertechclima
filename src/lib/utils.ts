@@ -37,12 +37,15 @@ export function getPersonalizedWhatsappUrl(url: string, name: string): string {
       newText = `Oi, meu nome é ${name} queria saber mais sobre os serviços de climatização da invertech!`;
     }
     
-    urlObj.searchParams.set("text", newText);
+    // Normalize newlines to only \n (LF) and remove any \r (CR)
+    const sanitizedText = newText.replace(/\r/g, "");
+    
+    urlObj.searchParams.set("text", sanitizedText);
     return urlObj.toString();
   } catch (e) {
     const number = WHATSAPP_NUMBER || "5563991129517";
     if (url.includes("PMOC") || url.includes("avaliação")) {
-      return `https://wa.me/${number}?text=${encodeURIComponent(`Olá! Gostaria de solicitar uma avaliação de PMOC para minha empresa.\n\nNome: ${name}\nEmpresa:\nSegmento:\nQuantidade aproximada de aparelhos:\nLocalização:`)}`;
+      return `https://wa.me/${number}?text=${encodeURIComponent(`Olá! Gostaria de solicitar uma avaliação de PMOC para minha empresa.\n\nNome: ${name}\nEmpresa:\nSegmento:\nQuantidade aproximada de aparelhos:\nLocalização:`.replace(/\r/g, ""))}`;
     }
     return `https://wa.me/${number}?text=${encodeURIComponent(`Oi, meu nome é ${name} queria saber mais sobre os serviços de climatização da invertech!`)}`;
   }
