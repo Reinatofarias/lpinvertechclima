@@ -7,9 +7,12 @@ import Button from "@/components/ui/Button";
 import { TESTIMONIALS, CTA_WHATSAPP, CTA_PHONE, GOOGLE_REVIEWS_URL } from "@/lib/constants";
 import { staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({
+  whatsappUrl,
+  locationSuffix = "",
+}: { whatsappUrl?: string; locationSuffix?: string } = {}) {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden bg-white">
+    <section id="avaliacoes" className="relative py-20 md:py-28 overflow-hidden bg-white scroll-mt-20">
       {/* Decorative background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -53,7 +56,7 @@ export default function TestimonialsSection() {
                   href={GOOGLE_REVIEWS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-[10px] font-bold text-slate-550 uppercase tracking-wider shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all hover:border-blue-500/30"
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-[10px] font-bold text-slate-600 uppercase tracking-wider shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all hover:border-blue-500/30"
                   title="Verificar no Google Reviews"
                 >
                   <span className="text-blue-600 font-extrabold">G</span>oogle
@@ -71,7 +74,7 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Text */}
-              <p className="text-slate-750 text-sm leading-relaxed mb-6 italic">
+              <p className="text-slate-700 text-sm leading-relaxed mb-6 italic">
                 &ldquo;{testimonial.text}&rdquo;
               </p>
 
@@ -95,7 +98,7 @@ export default function TestimonialsSection() {
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600 fill-emerald-50" />
                     </span>
                   </div>
-                  <p className="text-slate-550 text-xs mt-0.5">
+                  <p className="text-slate-600 text-xs mt-0.5">
                     {testimonial.role} • {testimonial.location}
                   </p>
                 </div>
@@ -128,7 +131,7 @@ export default function TestimonialsSection() {
         {/* Final Conversion Block */}
         <motion.div
           id="contato"
-          className="mt-16 md:mt-24 max-w-4xl mx-auto p-8 md:p-12 rounded-3xl bg-white border border-slate-200/80 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(15,23,42,0.04)]"
+          className="scroll-mt-24 mt-16 md:mt-24 max-w-4xl mx-auto p-8 md:p-12 rounded-3xl bg-white border border-slate-200/80 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(15,23,42,0.04)]"
           variants={staggerItem}
           initial="hidden"
           whileInView="visible"
@@ -141,14 +144,14 @@ export default function TestimonialsSection() {
             <h3 className="text-2xl md:text-4xl font-bold text-[#0C2D6B] font-outfit mb-4">
               Pronto para ter o máximo conforto com economia?
             </h3>
-            <p className="text-slate-650 text-sm md:text-base leading-relaxed mb-8">
+            <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8">
               Fale conosco hoje mesmo. Solicite seu orçamento gratuito sem nenhum compromisso. Atendemos rapidamente em Palmas-TO.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="whatsapp" size="lg" ctaLocation="testimonials-cta" className="w-full sm:w-auto">
+              <Button variant="whatsapp" size="lg" href={whatsappUrl} ctaLocation={`testimonials-cta${locationSuffix}`} className="w-full sm:w-auto">
                 {CTA_WHATSAPP}
               </Button>
-              <Button variant="phone" size="lg" ctaLocation="testimonials-cta" className="w-full sm:w-auto">
+              <Button variant="phone" size="lg" ctaLocation={`testimonials-cta${locationSuffix}`} className="w-full sm:w-auto">
                 {CTA_PHONE}
               </Button>
             </div>

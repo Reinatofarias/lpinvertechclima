@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, User, Phone, MessageCircle, Loader2 } from "lucide-react";
 import { useLeadModal } from "@/context/LeadModalContext";
 import { MAKE_WEBHOOK_URL, PMOC_MAKE_WEBHOOK_URL } from "@/lib/constants";
-import { trackCtaClick } from "@/lib/analytics";
+import { trackCtaClick, trackLeadSubmit } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 import { getPersonalizedWhatsappUrl } from "@/lib/utils";
 
 export default function LeadModal() {
@@ -94,6 +95,8 @@ export default function LeadModal() {
         origem: ctaLocation || "unknown",
         pagina_origem: typeof window !== "undefined" ? window.location.href : "",
         nome_pagina: nomePagina,
+        // Origem do anúncio (gclid/UTMs) para conversão offline e qualificação
+        ...getAttribution(),
       };
 
       const response = await fetch(webhookUrl, {
@@ -111,6 +114,8 @@ export default function LeadModal() {
       setHasCapturedLead(true);
 
       // 3. Trigger GTM tracking when the lead is actually dispatched to WhatsApp
+      // lead_form_submit leva o telefone em user_data para a conversão otimizada (GTM)
+      trackLeadSubmit(digits, ctaLocation || "modal");
       trackCtaClick("whatsapp", ctaLocation || "modal", "WhatsApp Lead Form Submitted");
 
       // 4. Personalize the WhatsApp URL with the user's name
@@ -177,7 +182,7 @@ export default function LeadModal() {
             {/* Close Button */}
             <button
               onClick={closeLeadModal}
-              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-650 hover:bg-slate-50 transition-colors cursor-pointer"
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer"
               aria-label="Fechar"
             >
               <X className="w-5 h-5" />
@@ -223,7 +228,7 @@ export default function LeadModal() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       disabled={isLoading}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm placeholder-slate-450 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all disabled:bg-slate-50 disabled:text-slate-400 font-medium"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all disabled:bg-slate-50 disabled:text-slate-400 font-medium"
                     />
                   </div>
                 </div>
@@ -245,7 +250,7 @@ export default function LeadModal() {
                       value={phone}
                       onChange={handlePhoneChange}
                       disabled={isLoading}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm placeholder-slate-450 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all disabled:bg-slate-50 disabled:text-slate-400 font-medium"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all disabled:bg-slate-50 disabled:text-slate-400 font-medium"
                     />
                   </div>
                 </div>
@@ -265,7 +270,7 @@ export default function LeadModal() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full mt-2 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-450 hover:to-emerald-550 text-white font-semibold text-sm shadow-[0_4px_15px_rgba(16,185,129,0.15)] hover:shadow-[0_8px_25px_rgba(16,185,129,0.25)] transition-all duration-300 disabled:opacity-75 disabled:cursor-not-allowed select-none cursor-pointer active:scale-98"
+                  className="w-full mt-2 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-semibold text-sm shadow-[0_4px_15px_rgba(16,185,129,0.15)] hover:shadow-[0_8px_25px_rgba(16,185,129,0.25)] transition-all duration-300 disabled:opacity-75 disabled:cursor-not-allowed select-none cursor-pointer active:scale-98"
                 >
                   {isLoading ? (
                     <>
@@ -282,7 +287,7 @@ export default function LeadModal() {
               </form>
 
               {/* GDPR Disclaimer */}
-              <p className="text-[10px] text-center text-slate-450 mt-4 leading-relaxed">
+              <p className="text-[10px] text-center text-slate-500 mt-4 leading-relaxed">
                 Seus dados estão protegidos. Usamos estas informações exclusivamente para prestar o seu atendimento.
               </p>
             </div>

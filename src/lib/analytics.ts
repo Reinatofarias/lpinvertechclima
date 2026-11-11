@@ -49,6 +49,21 @@ export function trackCtaClick(
 }
 
 /**
+ * Lead form submitted (antes de abrir o WhatsApp).
+ * Empurra o telefone em `user_data` para a conversão otimizada do Google Ads
+ * (no GTM: variável da camada de dados `user_data.phone_number`).
+ */
+export function trackLeadSubmit(phoneDigits: string, location: string): void {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "lead_form_submit",
+    cta_location: location,
+    user_data: { phone_number: `+55${phoneDigits}` },
+  });
+}
+
+/**
  * Track scroll depth events
  */
 export function trackScrollDepth(depth: number): void {

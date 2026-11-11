@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { captureAttribution } from "@/lib/attribution";
 
 interface LeadModalContextType {
   isOpen: boolean;
@@ -22,6 +23,11 @@ export function LeadModalProvider({ children }: { children: React.ReactNode }) {
   const [hasCapturedLead, setHasCapturedLead] = useState(false);
 
   const pathname = usePathname();
+
+  // Guarda gclid/UTMs da visita para mandar junto com o lead
+  useEffect(() => {
+    captureAttribution();
+  }, []);
 
   useEffect(() => {
     const isPmocPage = pathname.includes("pmoc-palmas");

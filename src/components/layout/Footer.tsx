@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="w-20 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
           {/* Copyright */}
-          <p className="text-slate-450 text-xs">
+          <p className="text-slate-500 text-xs">
             © {COMPANY_YEAR} {COMPANY_NAME}. Todos os direitos reservados.
           </p>
         </div>

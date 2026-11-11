@@ -9,7 +9,7 @@ import { trackCtaClick } from "@/lib/analytics";
 import { useLeadModal } from "@/context/LeadModalContext";
 import { getPersonalizedWhatsappUrl } from "@/lib/utils";
 
-export default function StickyCtaMobile() {
+export default function StickyCtaMobile({ whatsappUrl }: { whatsappUrl?: string } = {}) {
   const pathname = usePathname();
   const isPmocPage = pathname === "/pmoc-palmas";
   const [isVisible, setIsVisible] = useState(false);
@@ -41,11 +41,11 @@ export default function StickyCtaMobile() {
           >
             {/* WhatsApp Button */}
             <a
-              href={isPmocPage ? PMOC_WHATSAPP_URL : WHATSAPP_URL}
+              href={isPmocPage ? PMOC_WHATSAPP_URL : whatsappUrl ?? WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => {
-                const currentWhatsappUrl = isPmocPage ? PMOC_WHATSAPP_URL : WHATSAPP_URL;
+                const currentWhatsappUrl = isPmocPage ? PMOC_WHATSAPP_URL : whatsappUrl ?? WHATSAPP_URL;
                 const currentCtaLocation = isPmocPage ? "sticky-mobile-pmoc" : "sticky-mobile";
                 
                 if (!hasCapturedLead) {
