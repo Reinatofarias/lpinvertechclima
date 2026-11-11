@@ -149,7 +149,15 @@ export default function WorkGallerySection() {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="absolute inset-0 w-full h-full flex items-center justify-center"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.25}
+                  onDragEnd={(_, info) => {
+                    // Arrastar com o dedo troca de vídeo/foto
+                    if (info.offset.x < -60) handleNext();
+                    else if (info.offset.x > 60) handlePrev();
+                  }}
+                  className="absolute inset-0 w-full h-full flex items-center justify-center touch-pan-y cursor-grab active:cursor-grabbing"
                 >
                   {GALLERY_ITEMS[currentIndex].type === "video" ? (
                     <video

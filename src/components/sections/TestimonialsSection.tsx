@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote, CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import Button from "@/components/ui/Button";
 import { TESTIMONIALS, CTA_WHATSAPP, CTA_PHONE, GOOGLE_REVIEWS_URL } from "@/lib/constants";
 import { staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
@@ -35,8 +36,15 @@ export default function TestimonialsSection({
           </motion.div>
         </div>
 
+        {/* Números da Invertech */}
+        <div className="grid grid-cols-3 max-w-2xl mx-auto mb-8 md:mb-12 divide-x divide-slate-200">
+          <AnimatedCounter value={500} prefix="+" label="Serviços feitos" />
+          <AnimatedCounter value={400} prefix="+" label="Clientes em Palmas" />
+          <AnimatedCounter value={4.9} label="Nota no Google" />
+        </div>
+
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
+          className="-mx-4 px-4 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-px-4 pb-2 md:mx-0 md:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -46,7 +54,7 @@ export default function TestimonialsSection({
             <motion.div
               key={testimonial.name}
               variants={staggerItem}
-              className="group relative p-6 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
+              className="group relative shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center p-6 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
             >
               {/* Quote icon & Google Badge */}
               <div className="flex justify-between items-start mb-4">
@@ -103,6 +111,8 @@ export default function TestimonialsSection({
             </motion.div>
           ))}
         </motion.div>
+
+        <p className="md:hidden mt-3 text-center text-xs text-slate-500">Arraste para o lado para ver mais avaliações</p>
 
         {/* View all Google reviews button */}
         <motion.div

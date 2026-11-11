@@ -234,8 +234,8 @@ export default function ServicesSection() {
                       <motion.div 
                         className="h-full bg-rose-500"
                         initial={{ width: "0%" }}
-                        animate={{ width: "100%" }}
-                        transition={{ duration: 0.5 }}
+                        animate={{ width: `${(bill / 1500) * 100}%` }}
+                        transition={{ type: "spring", stiffness: 120, damping: 20 }}
                       />
                     </div>
                   </div>
@@ -249,8 +249,8 @@ export default function ServicesSection() {
                       <motion.div 
                         className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400"
                         initial={{ width: "0%" }}
-                        animate={{ width: "40%" }}
-                        transition={{ duration: 0.5 }}
+                        animate={{ width: `${(inverterBill / 1500) * 100}%` }}
+                        transition={{ type: "spring", stiffness: 120, damping: 20 }}
                       />
                     </div>
                   </div>
@@ -273,7 +273,7 @@ export default function ServicesSection() {
                       Economia Anual
                     </span>
                     <span className="text-lg md:text-xl font-extrabold text-emerald-600 font-outfit">
-                      R$ {yearlySaving}
+                      R$ {yearlySaving.toLocaleString("pt-BR")}
                     </span>
                   </div>
                 </div>

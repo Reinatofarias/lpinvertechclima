@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 interface AnimatedCounterProps {
   value: number;
   suffix?: string;
+  prefix?: string;
   label: string;
   duration?: number;
 }
@@ -13,6 +14,7 @@ interface AnimatedCounterProps {
 export default function AnimatedCounter({
   value,
   suffix = "",
+  prefix = "",
   label,
   duration = 2,
 }: AnimatedCounterProps) {
@@ -54,16 +56,17 @@ export default function AnimatedCounter({
   return (
     <motion.div
       ref={ref}
-      className="text-center p-4"
+      className="text-center px-2 py-3"
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
     >
-      <div className="text-3xl md:text-4xl font-extrabold font-outfit bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-        {count}
+      <div className="text-2xl md:text-4xl font-extrabold font-outfit text-[#0C2D6B] tabular-nums">
+        {prefix}
+        {value % 1 !== 0 ? count.toFixed(1).replace(".", ",") : count}
         {suffix}
       </div>
-      <p className="text-slate-400 text-sm mt-1.5 font-medium">{label}</p>
+      <p className="text-slate-600 text-xs md:text-sm mt-1 font-medium">{label}</p>
     </motion.div>
   );
 }
