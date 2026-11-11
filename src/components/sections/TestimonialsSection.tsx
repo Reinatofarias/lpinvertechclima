@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote, CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import Button from "@/components/ui/Button";
 import { TESTIMONIALS, CTA_WHATSAPP, CTA_PHONE, GOOGLE_REVIEWS_URL } from "@/lib/constants";
 import { staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
@@ -13,8 +15,6 @@ export default function TestimonialsSection({
 }: { whatsappUrl?: string; locationSuffix?: string } = {}) {
   return (
     <section id="avaliacoes" className="relative py-20 md:py-28 overflow-hidden bg-white scroll-mt-20">
-      {/* Decorative background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -36,8 +36,15 @@ export default function TestimonialsSection({
           </motion.div>
         </div>
 
+        {/* Números da Invertech */}
+        <div className="grid grid-cols-3 max-w-2xl mx-auto mb-8 md:mb-12 divide-x divide-slate-200">
+          <AnimatedCounter value={500} prefix="+" label="Serviços feitos" />
+          <AnimatedCounter value={400} prefix="+" label="Clientes em Palmas" />
+          <AnimatedCounter value={4.9} label="Nota no Google" />
+        </div>
+
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
+          className="-mx-4 px-4 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-px-4 pb-2 md:mx-0 md:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -47,7 +54,7 @@ export default function TestimonialsSection({
             <motion.div
               key={testimonial.name}
               variants={staggerItem}
-              className="group relative p-6 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
+              className="group relative shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center p-6 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
             >
               {/* Quote icon & Google Badge */}
               <div className="flex justify-between items-start mb-4">
@@ -56,10 +63,10 @@ export default function TestimonialsSection({
                   href={GOOGLE_REVIEWS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-[10px] font-bold text-slate-600 uppercase tracking-wider shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all hover:border-blue-500/30"
+                  className="flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-slate-600 transition-all hover:border-blue-500/30"
                   title="Verificar no Google Reviews"
                 >
-                  <span className="text-blue-600 font-extrabold">G</span>oogle
+                  Google
                 </a>
               </div>
 
@@ -74,9 +81,7 @@ export default function TestimonialsSection({
               </div>
 
               {/* Text */}
-              <p className="text-slate-700 text-sm leading-relaxed mb-6 italic">
-                &ldquo;{testimonial.text}&rdquo;
-              </p>
+              <TestimonialText text={testimonial.text} />
 
               {/* Divider */}
               <div className="w-full h-px bg-slate-100 mb-6" />
@@ -84,7 +89,7 @@ export default function TestimonialsSection({
               {/* Author */}
               <div className="flex items-center gap-3">
                 {/* Avatar */}
-                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-50 to-emerald-50 flex items-center justify-center border border-blue-100 shrink-0">
+                <div className="w-11 h-11 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100 shrink-0">
                   <span className="text-[#0C2D6B] text-sm font-bold font-outfit">
                     {testimonial.name.charAt(0)}
                   </span>
@@ -106,6 +111,8 @@ export default function TestimonialsSection({
             </motion.div>
           ))}
         </motion.div>
+
+        <p className="md:hidden mt-3 text-center text-xs text-slate-500">Arraste para o lado para ver mais avaliações</p>
 
         {/* View all Google reviews button */}
         <motion.div
@@ -137,8 +144,6 @@ export default function TestimonialsSection({
           whileInView="visible"
           viewport={viewportConfig}
         >
-          {/* Decorative soft glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-emerald-500/[0.04] rounded-full blur-[80px] pointer-events-none" />
 
           <div className="relative z-10 max-w-2xl mx-auto">
             <h3 className="text-2xl md:text-4xl font-bold text-[#0C2D6B] font-outfit mb-4">
@@ -156,7 +161,7 @@ export default function TestimonialsSection({
               </Button>
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-slate-500 text-xs">
-              {["Sem taxa de visita", "Retorno em até 1h", "Garantia de 1 ano", "Equipe autorizada"].map((item) => (
+              {["Sem taxa de visita", "Retorno em até 1h", "Garantia de 1 ano", "Condição especial em contrato de manutenção"].map((item) => (
                 <span key={item} className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/60" />
                   {item}
@@ -168,5 +173,26 @@ export default function TestimonialsSection({
 
       </div>
     </section>
+  );
+}
+
+function TestimonialText({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > 180;
+  return (
+    <div className="mb-6">
+      <p className={`text-slate-700 text-[15px] leading-relaxed ${expanded ? "" : "line-clamp-4"}`}>
+        &ldquo;{text}&rdquo;
+      </p>
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-2 text-sm font-semibold text-blue-700 hover:text-blue-800 cursor-pointer"
+        >
+          {expanded ? "Ler menos" : "Ler mais"}
+        </button>
+      )}
+    </div>
   );
 }

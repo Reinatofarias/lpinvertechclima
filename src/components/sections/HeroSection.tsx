@@ -5,7 +5,6 @@ import { ChevronDown, Star, CheckCircle, Shield, Clock } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import GlowOrb from "@/components/effects/GlowOrb";
 import {
   HERO_HEADLINE,
   HERO_SUBHEADLINE,
@@ -13,7 +12,7 @@ import {
   CTA_PHONE,
   GOOGLE_REVIEWS_URL,
 } from "@/lib/constants";
-import { fadeInUp, floatAnimation, viewportConfig } from "@/lib/animations";
+import { fadeInUp, viewportConfig } from "@/lib/animations";
 
 const ParticlesBackground = dynamic(
   () => import("@/components/effects/ParticlesBackground"),
@@ -45,30 +44,16 @@ export default function HeroSection({
   return (
     <section
       id="hero"
-      className="relative min-h-screen lg:min-h-[90vh] xl:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16 md:py-24"
+      className="relative lg:min-h-[90vh] xl:min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12 md:py-24"
     >
       {/* Background layers */}
       <div className="absolute inset-0 bg-[#FFFFFF]" />
 
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(15,23,42,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.15) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-        aria-hidden="true"
-      />
 
-      {/* Subtle Glow orbs (reduced opacity for light theme) */}
-      <GlowOrb color="blue" size="lg" position="top-[-200px] left-1/3 -translate-x-1/2" className="opacity-30" />
-      <GlowOrb color="green" size="md" position="top-[30%] right-[-100px]" delay={2} className="opacity-20" />
-      <GlowOrb color="cyan" size="sm" position="bottom-[20%] left-[-50px]" delay={4} className="opacity-25" />
 
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-8 xl:gap-12 items-center">
           
           {/* Left Column: Headline and CTAs */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col justify-center">
@@ -87,7 +72,7 @@ export default function HeroSection({
                 i === 0 ? (
                   <span key={i}>
                     {part}
-                    <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent block sm:inline mt-1 sm:mt-0">
+                    <span className="text-[#1A5BD8] block sm:inline mt-1 sm:mt-0">
                       {highlight}
                     </span>
                   </span>
@@ -186,65 +171,36 @@ export default function HeroSection({
 
           {/* Right Column: Visual Composition */}
           <motion.div
-            className="lg:col-span-5 relative w-full flex items-center justify-center mt-6 lg:mt-0"
+            className="lg:col-span-5 relative w-full flex items-center justify-center"
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.3 }}
           >
             {/* Dynamic Glass Container (removed overflow-hidden to allow badges to float over border) */}
-            <div className="relative group w-full max-w-[450px] aspect-[4/5] sm:aspect-[4/4.5] lg:aspect-[4/5] rounded-[32px] p-3 bg-gradient-to-br from-blue-500/5 via-cyan-500/0 to-emerald-500/5 border border-slate-200 shadow-[0_15px_50px_rgba(0,0,0,0.05)] transition-all duration-700 hover:border-emerald-500/25">
+            <div className="relative w-full max-w-[450px] aspect-[16/11] sm:aspect-[4/4.5] lg:aspect-[4/5] rounded-2xl overflow-hidden border border-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
               
               {/* Inner Wrapper */}
-              <div className="relative w-full h-full rounded-[24px] overflow-hidden">
+              <div className="relative w-full h-full">
                 <Image
                   src="/images/service-install-1.jpg"
                   alt="Instalação Premium de Ar-Condicionado Inverter pela INVERTECH CLIMA em Palmas"
                   fill
                   sizes="(max-w-768px) 100vw, 450px"
                   priority
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-[center_30%]"
                 />
                 
                 {/* Visual overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/10 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent mix-blend-overlay" />
               </div>
 
-              {/* Floating Economy Badge */}
-              <motion.div
-                className="absolute top-8 -left-2 sm:-left-6 bg-white/95 backdrop-blur-md border border-emerald-100 rounded-2xl p-3.5 shadow-2xl flex items-center gap-3 z-10"
-                animate={floatAnimation}
-              >
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
-                  <span className="text-emerald-600 font-extrabold text-sm font-outfit">60%</span>
-                </div>
-                <div>
-                  <h4 className="text-slate-800 font-bold text-xs font-outfit leading-tight">Economia Real</h4>
-                  <p className="text-[11px] text-slate-500">Tecnologia Inverter</p>
-                </div>
-              </motion.div>
+              {/* Legenda real da foto */}
+              <div className="absolute bottom-0 inset-x-0 px-4 py-3 bg-gradient-to-t from-slate-900/75 to-transparent">
+                <p className="text-white text-xs sm:text-sm font-medium">Eduardo, técnico da Invertech, em instalação em Palmas</p>
+              </div>
 
-              {/* Floating Experience Badge */}
-              <motion.div
-                className="absolute bottom-10 -right-2 sm:-right-6 bg-white/95 backdrop-blur-md border border-blue-100 rounded-2xl p-3.5 shadow-2xl flex items-center gap-3 z-10"
-                animate={{
-                  y: [0, 8, 0],
-                  transition: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
-                }}
-              >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                  <Star className="w-5 h-5 text-blue-500 fill-current" />
-                </div>
-                <div>
-                  <h4 className="text-slate-800 font-bold text-xs font-outfit leading-tight">Serviço Autorizado</h4>
-                  <p className="text-[11px] text-slate-500">Garantia Documentada</p>
-                </div>
-              </motion.div>
             </div>
 
-            {/* Behind the image decorative background glow */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-blue-500/5 via-cyan-500/0 to-emerald-500/5 rounded-[40px] blur-3xl -z-10 opacity-70" />
           </motion.div>
 
         </div>
@@ -252,7 +208,7 @@ export default function HeroSection({
 
       {/* Scroll indicator */}
       <motion.button
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer"
+        className="hidden lg:block absolute bottom-6 left-1/2 -translate-x-1/2 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer"
         onClick={handleScrollDown}
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -263,9 +219,7 @@ export default function HeroSection({
         <ChevronDown className="w-7 h-7" />
       </motion.button>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-    </section>
+          </section>
   );
 }
 
