@@ -30,6 +30,9 @@ export function getPersonalizedWhatsappUrl(url: string, name: string): string {
         } else {
           newText = `Olá! Gostaria de solicitar uma avaliação de PMOC para minha empresa.\n\nNome: ${name}\nEmpresa:\nSegmento:\nQuantidade aproximada de aparelhos:\nLocalização:`;
         }
+      } else if (textParam.startsWith("Olá! Vim pelo site")) {
+        // Mensagens por serviço (cards e páginas de sitelink): mantém o serviço pedido
+        newText = `Oi, meu nome é ${name}. ${textParam.replace(/^Olá!\s*/, "")}`;
       } else {
         newText = `Oi, meu nome é ${name} queria saber mais sobre os serviços de climatização da invertech!`;
       }

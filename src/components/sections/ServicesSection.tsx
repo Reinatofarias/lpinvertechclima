@@ -10,6 +10,7 @@ import { SERVICES, WHATSAPP_NUMBER } from "@/lib/constants";
 import { staggerContainer, staggerItem, fadeInLeft, fadeInRight, viewportConfig } from "@/lib/animations";
 import { trackCtaClick } from "@/lib/analytics";
 import { useLeadModal } from "@/context/LeadModalContext";
+import { buildWhatsappUrl, serviceWhatsappText } from "@/lib/landings";
 
 export default function ServicesSection() {
   const [bill, setBill] = useState(500); // monthly bill in BRL
@@ -32,7 +33,7 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="servicos" className="relative py-20 md:py-28 overflow-hidden bg-white">
+    <section id="servicos" className="relative py-20 md:py-28 overflow-hidden bg-white scroll-mt-20">
       {/* Decorative background glows */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -136,32 +137,35 @@ export default function ServicesSection() {
               <motion.div
                 key={service.title}
                 variants={staggerItem}
-                className="group relative p-6 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
+                className="group relative p-5 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
               >
                 {/* Hover subtle tint */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/[0.01] to-blue-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="w-14 h-14 mb-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 flex items-center justify-center border border-emerald-100 group-hover:border-emerald-200 transition-colors duration-300">
-                    <IconComponent className="w-7 h-7 text-emerald-600 group-hover:text-emerald-500 transition-colors duration-300" />
-                  </div>
+                  <div className="flex md:block items-center gap-3 mb-3 md:mb-0">
+                    <div className="w-11 h-11 md:w-14 md:h-14 md:mb-5 shrink-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 flex items-center justify-center border border-emerald-100 group-hover:border-emerald-200 transition-colors duration-300">
+                      <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-emerald-600 group-hover:text-emerald-500 transition-colors duration-300" />
+                    </div>
 
-                  {/* Content */}
-                  <h3 className="text-lg font-semibold text-[#0C2D6B] mb-3 font-outfit">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                    {/* Content */}
+                    <h3 className="text-lg font-semibold text-[#0C2D6B] md:mb-3 font-outfit leading-snug">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-4 md:mb-5">
                     {service.description}
                   </p>
 
                   {/* Service CTA */}
                   <Button
-                    variant="ghost"
+                    variant="whatsapp"
                     size="sm"
+                    href={buildWhatsappUrl(serviceWhatsappText(service.title))}
                     ctaLocation={`services-${service.title}`}
                     showArrow
-                    className="!px-0 text-emerald-600 hover:text-emerald-700 font-semibold"
+                    className="w-full sm:w-auto"
                   >
                     Solicitar Orçamento
                   </Button>
@@ -173,7 +177,8 @@ export default function ServicesSection() {
 
         {/* Unified Energy Savings Simulator Card */}
         <motion.div
-          className="max-w-4xl mx-auto relative w-full"
+          id="economia"
+          className="max-w-4xl mx-auto relative w-full scroll-mt-24"
           variants={staggerItem}
           initial="hidden"
           whileInView="visible"
@@ -216,7 +221,7 @@ export default function ServicesSection() {
                     }}
                   />
                   
-                  <div className="flex justify-between text-[10px] text-slate-450">
+                  <div className="flex justify-between text-[10px] text-slate-500">
                     <span>R$ 150</span>
                     <span>R$ 800</span>
                     <span>R$ 1500</span>
@@ -289,7 +294,7 @@ export default function ServicesSection() {
                     <LucideIcons.MessageCircle className="w-5 h-5 shrink-0" />
                     <span>Quero economizar R$ {monthlySaving}/mês</span>
                   </a>
-                  <p className="text-[9px] text-slate-400 mt-2.5">
+                  <p className="text-[11px] text-slate-500 mt-2.5">
                     *Cálculo baseado na diferença média de consumo de energia de Palmas.
                   </p>
                 </div>

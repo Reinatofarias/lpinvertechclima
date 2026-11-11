@@ -122,7 +122,7 @@ export default function WorkGallerySection() {
   };
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden bg-slate-50 border-y border-slate-200/60">
+    <section id="trabalhos" className="relative py-20 md:py-28 overflow-hidden bg-slate-50 border-y border-slate-200/60 scroll-mt-20">
       {/* Decorative glows */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[350px] h-[350px] bg-blue-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[350px] h-[350px] bg-emerald-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
@@ -238,7 +238,7 @@ export default function WorkGallerySection() {
                     {GALLERY_ITEMS[currentIndex].title}
                   </h3>
 
-                  <p className="text-slate-655 text-sm leading-relaxed">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     {GALLERY_ITEMS[currentIndex].description}
                   </p>
                 </motion.div>
@@ -255,7 +255,7 @@ export default function WorkGallerySection() {
                         setCurrentIndex(index);
                       }}
                       className={`h-2 rounded-full transition-all duration-300 ${
-                        index === currentIndex ? "w-5 bg-emerald-500" : "w-2 bg-slate-200 hover:bg-slate-350"
+                        index === currentIndex ? "w-5 bg-emerald-500" : "w-2 bg-slate-200 hover:bg-slate-300"
                       }`}
                       aria-label={`Ir para slide ${index + 1}`}
                     />

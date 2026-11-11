@@ -11,6 +11,7 @@ import {
   HERO_SUBHEADLINE,
   CTA_WHATSAPP,
   CTA_PHONE,
+  GOOGLE_REVIEWS_URL,
 } from "@/lib/constants";
 import { fadeInUp, floatAnimation, viewportConfig } from "@/lib/animations";
 
@@ -19,9 +20,23 @@ const ParticlesBackground = dynamic(
   { ssr: false }
 );
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  headline?: string;
+  highlight?: string;
+  subheadline?: string;
+  whatsappUrl?: string;
+  locationSuffix?: string;
+}
+
+export default function HeroSection({
+  headline = HERO_HEADLINE,
+  highlight = "Não Aceita",
+  subheadline = HERO_SUBHEADLINE,
+  whatsappUrl,
+  locationSuffix = "",
+}: HeroSectionProps = {}) {
   const handleScrollDown = () => {
-    const element = document.querySelector("#social-proof");
+    const element = document.querySelector("#servicos");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -68,12 +83,12 @@ export default function HeroSection() {
               animate="visible"
               transition={{ delay: 0.1 }}
             >
-              {HERO_HEADLINE.split("Não Aceita").map((part, i) =>
+              {headline.split(highlight).map((part, i) =>
                 i === 0 ? (
                   <span key={i}>
                     {part}
                     <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent block sm:inline mt-1 sm:mt-0">
-                      Não Aceita
+                      {highlight}
                     </span>
                   </span>
                 ) : (
@@ -90,36 +105,36 @@ export default function HeroSection() {
               animate="visible"
               transition={{ delay: 0.2 }}
             >
-              {HERO_SUBHEADLINE}
+              {subheadline}
             </motion.p>
 
             {/* Quick Conversion Badges (Google Traffic) */}
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 mb-8 text-left"
+              className="grid grid-cols-3 gap-2 sm:gap-3 max-w-md mx-auto lg:mx-0 mb-7 sm:mb-8 text-left"
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.25 }}
             >
-              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-[0_4px_15px_rgba(0,0,0,0.02)]">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-[0_4px_15px_rgba(0,0,0,0.02)]">
                 <Clock className="w-4 h-4 text-cyan-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-slate-800 text-xs font-bold font-outfit">Orçamento rápido</h4>
-                  <p className="text-[10px] text-slate-500">Em até 1 hora</p>
+                  <h4 className="text-slate-800 text-xs font-bold font-outfit leading-tight">Orçamento rápido</h4>
+                  <p className="text-[11px] text-slate-500">Em até 1 hora</p>
                 </div>
               </div>
-              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-[0_4px_15px_rgba(0,0,0,0.02)]">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-[0_4px_15px_rgba(0,0,0,0.02)]">
                 <Shield className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-slate-800 text-xs font-bold font-outfit">Garantia real</h4>
-                  <p className="text-[10px] text-slate-500">Em todos os serviços</p>
+                  <h4 className="text-slate-800 text-xs font-bold font-outfit leading-tight">Garantia real</h4>
+                  <p className="text-[11px] text-slate-500">Em todos os serviços</p>
                 </div>
               </div>
-              <div className="flex items-start gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-[0_4px_15px_rgba(0,0,0,0.02)]">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-[0_4px_15px_rgba(0,0,0,0.02)]">
                 <CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-slate-800 text-xs font-bold font-outfit">Autorizada</h4>
-                  <p className="text-[10px] text-slate-500">Equipe qualificada</p>
+                  <h4 className="text-slate-800 text-xs font-bold font-outfit leading-tight">Autorizada</h4>
+                  <p className="text-[11px] text-slate-500">Equipe qualificada</p>
                 </div>
               </div>
             </motion.div>
@@ -132,24 +147,41 @@ export default function HeroSection() {
               animate="visible"
               transition={{ delay: 0.3 }}
             >
-              <Button variant="whatsapp" size="lg" ctaLocation="hero" className="w-full sm:w-auto shadow-emerald-500/10">
+              <Button variant="whatsapp" size="lg" href={whatsappUrl} ctaLocation={`hero${locationSuffix}`} className="w-full sm:w-auto shadow-emerald-500/10">
                 {CTA_WHATSAPP}
               </Button>
-              <Button variant="phone" size="lg" ctaLocation="hero" className="w-full sm:w-auto">
+              <Button variant="phone" size="lg" ctaLocation={`hero${locationSuffix}`} className="w-full sm:w-auto">
                 {CTA_PHONE}
               </Button>
             </motion.div>
 
             {/* Trust indicators */}
-            <motion.p
-              className="mt-5 text-slate-500 text-xs tracking-wide"
+            <motion.div
+              className="mt-5 flex flex-col items-center lg:items-start gap-2"
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.35 }}
             >
-              ✓ Sem taxa de visita técnica para orçamentos em Palmas-TO
-            </motion.p>
+              <a
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-x-2 gap-y-1 text-sm text-slate-700 hover:text-blue-700 transition-colors"
+              >
+                <span className="flex gap-0.5" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </span>
+                <span>
+                  <strong className="font-semibold text-slate-900">4,9 no Google</strong> · <span className="whitespace-nowrap">+400 clientes em Palmas</span>
+                </span>
+              </a>
+              <p className="text-slate-500 text-xs tracking-wide">
+                ✓ Sem taxa de visita técnica para orçamentos em Palmas-TO
+              </p>
+            </motion.div>
           </div>
 
           {/* Right Column: Visual Composition */}
@@ -189,7 +221,7 @@ export default function HeroSection() {
                 </div>
                 <div>
                   <h4 className="text-slate-800 font-bold text-xs font-outfit leading-tight">Economia Real</h4>
-                  <p className="text-[10px] text-slate-500">Tecnologia Inverter</p>
+                  <p className="text-[11px] text-slate-500">Tecnologia Inverter</p>
                 </div>
               </motion.div>
 
@@ -206,7 +238,7 @@ export default function HeroSection() {
                 </div>
                 <div>
                   <h4 className="text-slate-800 font-bold text-xs font-outfit leading-tight">Serviço Autorizado</h4>
-                  <p className="text-[10px] text-slate-500">Garantia Documentada</p>
+                  <p className="text-[11px] text-slate-500">Garantia Documentada</p>
                 </div>
               </motion.div>
             </div>

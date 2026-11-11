@@ -77,11 +77,11 @@ export default function PMOCPage() {
                   para começar a cuidar dele
                 </h1>
                 
-                <p className="text-base sm:text-lg text-slate-650 font-medium leading-relaxed mb-6">
+                <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed mb-6">
                   Com o PMOC, sua empresa organiza as manutenções, registra os serviços realizados e acompanha os equipamentos antes que pequenas falhas se transformem em paralisações, gastos inesperados e problemas no ambiente.
                 </p>
 
-                <p className="text-sm sm:text-base text-slate-550 leading-relaxed mb-8">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-8">
                   A Invertech Clima realiza o levantamento dos equipamentos, organiza o plano de manutenção e acompanha a execução dos serviços em empresas de Palmas e região.
                 </p>
 
@@ -183,7 +183,7 @@ export default function PMOCPage() {
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left text column */}
-              <div className="lg:col-span-7 space-y-6 text-slate-650 leading-relaxed text-base md:text-lg">
+              <div className="lg:col-span-7 space-y-6 text-slate-600 leading-relaxed text-base md:text-lg">
                 <p>
                   Quando um equipamento deixa de funcionar, a empresa normalmente já perdeu tempo. Antes da parada, ele pode ter consumido mais energia, trabalhado com sujeira acumulada, apresentado pequenas falhas e prejudicado o conforto de clientes e colaboradores.
                 </p>
@@ -210,7 +210,7 @@ export default function PMOCPage() {
 
               {/* Right image/dashboard column */}
               <div className="lg:col-span-5 relative w-full flex items-center justify-center">
-                <div className="w-full max-w-[420px] bg-slate-950 text-slate-100 rounded-3xl p-6 border border-slate-800 shadow-[0_25px_60px_rgba(15,23,42,0.4)] font-inter relative overflow-hidden transition-all duration-555 hover:border-slate-750">
+                <div className="w-full max-w-[420px] bg-slate-950 text-slate-100 rounded-3xl p-6 border border-slate-800 shadow-[0_25px_60px_rgba(15,23,42,0.4)] font-inter relative overflow-hidden transition-all duration-555 hover:border-slate-700">
                   {/* Neon top highlight */}
                   <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500" />
                   
@@ -335,7 +335,7 @@ export default function PMOCPage() {
               <h2 className="text-2xl md:text-4xl font-bold leading-tight font-outfit text-[#0C2D6B]">
                 Gestão inteligente de climatização: saiba o que tem, o que precisa ser feito e quando agir
               </h2>
-              <p className="text-slate-550 text-sm md:text-base mt-3 leading-relaxed">
+              <p className="text-slate-600 text-sm md:text-base mt-3 leading-relaxed">
                 Organizamos o levantamento técnico, o cronograma e a execução contínua dos serviços de manutenção. Conheça as principais atividades cobertas:
               </p>
             </div>
@@ -348,7 +348,7 @@ export default function PMOCPage() {
                     <Building2 className="w-5 h-5" />
                   </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Equipamentos mapeados</h3>
-                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Identificação dos aparelhos, inventário técnico detalhado das capacidades, localização física e condições encontradas nos compressores e evaporadoras.
                   </p>
                 </div>
@@ -361,7 +361,7 @@ export default function PMOCPage() {
                     <ClipboardList className="w-5 h-5" />
                   </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Manutenção planejada</h3>
-                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Organização das atividades preventivas e determinação das periodicidades de limpeza, higienização e testes elétricos adequados para cada ambiente.
                   </p>
                 </div>
@@ -374,7 +374,7 @@ export default function PMOCPage() {
                     <FileText className="w-5 h-5" />
                   </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Serviços registrados</h3>
-                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Histórico consolidado com fichas de atendimento e laudos técnicos sobre o que foi realizado, peças substituídas e necessidades identificadas.
                   </p>
                 </div>
@@ -387,7 +387,7 @@ export default function PMOCPage() {
                     <Search className="w-5 h-5" />
                   </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Prevenção de falhas</h3>
-                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Identificação de desgastes em motores, vazamentos de gás refrigerante e acúmulo de sujeira antes que os aparelhos venham a parar de climatizar.
                   </p>
                 </div>
@@ -400,7 +400,7 @@ export default function PMOCPage() {
                     <Zap className="w-5 h-5" />
                   </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Custos mais previsíveis</h3>
-                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     A empresa reduz drasticamente a dependência de reparos urgentes de última hora e de taxas de visitas emergenciais nos momentos mais quentes do ano.
                   </p>
                 </div>
@@ -413,7 +413,7 @@ export default function PMOCPage() {
                     <Users className="w-5 h-5" />
                   </div>
                   <h3 className="font-outfit font-bold text-slate-900 text-lg mb-2">Acompanhamento contínuo</h3>
-                  <p className="text-xs sm:text-sm text-slate-550 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Um parceiro técnico focado em manter seus aparelhos limpos e eficientes, com responsabilidade técnica assinada por engenheiro habilitado, quando aplicável.
                   </p>
                 </div>
@@ -530,7 +530,7 @@ export default function PMOCPage() {
                 <div>
                   <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">01</span>
                   <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Entendemos sua operação</h3>
-                  <p className="text-xs text-slate-550 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Coletamos dados iniciais sobre seu estabelecimento, segmento e a contagem estimada de aparelhos.
                   </p>
                 </div>
@@ -541,7 +541,7 @@ export default function PMOCPage() {
                 <div>
                   <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">02</span>
                   <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Mapeamos os aparelhos</h3>
-                  <p className="text-xs text-slate-550 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Avaliamos in loco o modelo, capacidade técnica, estado de conservação e localização de cada ar.
                   </p>
                 </div>
@@ -552,7 +552,7 @@ export default function PMOCPage() {
                 <div>
                   <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">03</span>
                   <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Organizamos o plano</h3>
-                  <p className="text-xs text-slate-550 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Desenhamos as atividades necessárias e estruturamos as frequências de visitas preventivas.
                   </p>
                 </div>
@@ -563,7 +563,7 @@ export default function PMOCPage() {
                 <div>
                   <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">04</span>
                   <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Executamos manutenções</h3>
-                  <p className="text-xs text-slate-550 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Nossos técnicos qualificados efetuam a higienização profunda e as verificações mecânicas agendadas.
                   </p>
                 </div>
@@ -574,7 +574,7 @@ export default function PMOCPage() {
                 <div>
                   <span className="font-outfit font-extrabold text-blue-600/25 text-3xl block mb-3">05</span>
                   <h3 className="font-outfit font-bold text-slate-900 text-sm mb-1.5">Histórico atualizado</h3>
-                  <p className="text-xs text-slate-550 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed">
                     Registramos tudo nas fichas de manutenção para que você mantenha o acompanhamento em dia.
                   </p>
                 </div>
@@ -708,7 +708,7 @@ export default function PMOCPage() {
             <h2 className="text-2xl md:text-4xl font-extrabold font-outfit text-[#0C2D6B] mb-4">
               O próximo problema do seu ar-condicionado não precisa pegar sua empresa de surpresa
             </h2>
-            <p className="text-sm sm:text-base text-slate-650 max-w-xl mx-auto mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto mb-8 leading-relaxed">
               Converse com a Invertech e descubra como organizar os equipamentos, planejar as manutenções e manter um histórico do que foi realizado.
             </p>
             

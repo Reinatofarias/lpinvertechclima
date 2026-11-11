@@ -28,11 +28,11 @@ interface ButtonProps {
 
 const variantStyles: Record<ButtonVariant, string> = {
   whatsapp:
-    "bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-450 hover:to-emerald-550 text-white shadow-[0_4px_15px_rgba(16,185,129,0.15)] hover:shadow-[0_10px_25px_rgba(16,185,129,0.25)]",
+    "bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white shadow-[0_4px_15px_rgba(16,185,129,0.15)] hover:shadow-[0_10px_25px_rgba(16,185,129,0.25)]",
   phone:
     "bg-blue-50 border border-blue-100 text-blue-600 hover:bg-blue-100 hover:border-blue-200 shadow-[0_4px_15px_rgba(37,99,235,0.02)] hover:shadow-[0_8px_20px_rgba(37,99,235,0.05)]",
   outline:
-    "bg-transparent border border-slate-200 hover:border-slate-300 text-slate-650 hover:bg-slate-50 hover:text-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.01)]",
+    "bg-transparent border border-slate-200 hover:border-slate-300 text-slate-600 hover:bg-slate-50 hover:text-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.01)]",
   ghost:
     "bg-transparent hover:bg-slate-50 text-slate-600 hover:text-slate-800",
 };
