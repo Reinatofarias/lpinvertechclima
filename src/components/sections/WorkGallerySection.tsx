@@ -123,9 +123,6 @@ export default function WorkGallerySection() {
 
   return (
     <section id="trabalhos" className="relative py-20 md:py-28 overflow-hidden bg-slate-50 border-y border-slate-200/60 scroll-mt-20">
-      {/* Decorative glows */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[350px] h-[350px] bg-blue-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[350px] h-[350px] bg-emerald-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -158,6 +155,8 @@ export default function WorkGallerySection() {
                     <video
                       key={GALLERY_ITEMS[currentIndex].src}
                       src={GALLERY_ITEMS[currentIndex].src}
+                      poster={GALLERY_ITEMS[currentIndex].src.replace(".mp4", "-capa.jpg")}
+                      preload="metadata"
                       className="w-full h-full object-cover object-center"
                       autoPlay
                       muted

@@ -34,9 +34,6 @@ export default function ServicesSection() {
 
   return (
     <section id="servicos" className="relative py-20 md:py-28 overflow-hidden bg-white scroll-mt-20">
-      {/* Decorative background glows */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -94,7 +91,7 @@ export default function ServicesSection() {
             whileInView="visible"
             viewport={viewportConfig}
           >
-            <div className="relative w-full max-w-[380px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2.5 bg-gradient-to-br from-emerald-500/10 to-blue-500/5 border border-emerald-100 shadow-[0_10px_35px_rgba(16,185,129,0.06)]">
+            <div className="relative w-full max-w-[380px] aspect-[4/4.5] rounded-3xl overflow-hidden p-2.5 bg-slate-50 border border-slate-200 shadow-[0_10px_35px_rgba(16,185,129,0.06)]">
               <div className="relative w-full h-full rounded-[18px] overflow-hidden">
                 <Image 
                   src="/images/cleaning-service.jpg"
@@ -139,13 +136,11 @@ export default function ServicesSection() {
                 variants={staggerItem}
                 className="group relative p-5 md:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-emerald-500/30 hover:shadow-[0_20px_40px_rgba(16,185,129,0.04)] transition-all duration-500 hover:-translate-y-1"
               >
-                {/* Hover subtle tint */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/[0.01] to-blue-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative z-10">
                   {/* Icon */}
                   <div className="flex md:block items-center gap-3 mb-3 md:mb-0">
-                    <div className="w-11 h-11 md:w-14 md:h-14 md:mb-5 shrink-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-emerald-50 to-cyan-50 flex items-center justify-center border border-emerald-100 group-hover:border-emerald-200 transition-colors duration-300">
+                    <div className="w-11 h-11 md:w-14 md:h-14 md:mb-5 shrink-0 rounded-xl md:rounded-2xl bg-emerald-50 flex items-center justify-center border border-emerald-100 group-hover:border-emerald-200 transition-colors duration-300">
                       <IconComponent className="w-6 h-6 md:w-7 md:h-7 text-emerald-600 group-hover:text-emerald-500 transition-colors duration-300" />
                     </div>
 
@@ -303,9 +298,6 @@ export default function ServicesSection() {
             </div>
 
           </div>
-
-          {/* Background glow for the card */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/[0.02] to-emerald-500/[0.02] rounded-3xl blur-2xl -z-10" />
         </motion.div>
 
       </div>
