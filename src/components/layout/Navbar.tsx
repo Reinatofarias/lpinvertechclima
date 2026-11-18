@@ -10,7 +10,10 @@ import { NAV_LINKS, COMPANY_NAME, CTA_WHATSAPP } from "@/lib/constants";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  // A Black Friday tem as mesmas âncoras (#hero, #servicos, #contato): o menu rola na própria página
+  // para o visitante da campanha não sair dela. Topo escuro: menu já começa com fundo branco.
+  const isBlackFriday = pathname === "/black-friday";
+  const isHome = pathname === "/" || isBlackFriday;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -58,7 +61,7 @@ export default function Navbar() {
     <>
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
+          isScrolled || isBlackFriday
             ? "bg-[rgba(255,255,255,0.85)] backdrop-blur-xl border-b border-slate-200/60 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
             : "bg-transparent"
         }`}

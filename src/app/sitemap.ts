@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/black-friday`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     ...SERVICE_LANDINGS.map((l) => ({
       url: `${baseUrl}/${l.slug}`,
       lastModified: new Date(),
