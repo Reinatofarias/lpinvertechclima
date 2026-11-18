@@ -25,7 +25,7 @@ export default function BlackFridayPromo() {
   useEffect(() => {
     if (pathname.includes("black-friday") || pathname.includes("pmoc-palmas")) return;
     const agora = Date.now();
-    const previa = new URLSearchParams(window.location.search).get("bf") === "1";
+    const previa = new URLSearchParams(window.location.search).get("bf")?.startsWith("1");
     const noPeriodo = agora >= new Date(BF_INICIO).getTime() && agora < new Date(BF_FIM).getTime();
     if (!previa && !noPeriodo) return;
     if (!previa && sessionStorage.getItem(STORAGE_KEY)) return;
