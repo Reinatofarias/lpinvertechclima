@@ -3,6 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { LeadModalProvider } from "@/context/LeadModalContext";
 import LeadModal from "@/components/ui/LeadModal";
+import BlackFridayPromo from "@/components/blackfriday/BlackFridayPromo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -145,6 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <LeadModalProvider>
           {children}
           <LeadModal />
+          <BlackFridayPromo />
         </LeadModalProvider>
       </body>
     </html>

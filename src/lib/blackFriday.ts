@@ -11,6 +11,12 @@ import { buildWhatsappUrl } from "./landings";
  */
 export const BF_PERIODO = "de 23 a 29 de novembro";
 
+/** Início da campanha. O popup das outras páginas só aparece entre início e fim. */
+export const BF_INICIO = "2026-11-23T00:00:00-03:00";
+
+/** Fim da campanha (horário de Palmas, UTC-3). Usado na contagem regressiva. */
+export const BF_FIM = "2026-11-29T23:59:59-03:00";
+
 export const BF_PERIODO_TEXTO = BF_PERIODO
   ? `Válido ${BF_PERIODO}, para contratações feitas durante a campanha.`
   : "Somente nesta semana, para contratações feitas durante a campanha.";
