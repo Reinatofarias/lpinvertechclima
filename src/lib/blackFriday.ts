@@ -9,7 +9,7 @@ import { buildWhatsappUrl } from "./landings";
  * Período da campanha. Enquanto as datas não forem definidas, a página
  * mostra "somente nesta semana". Exemplo: "de 23/11 a 30/11".
  */
-export const BF_PERIODO = "";
+export const BF_PERIODO = "de 23 a 29 de novembro";
 
 export const BF_PERIODO_TEXTO = BF_PERIODO
   ? `Válido ${BF_PERIODO}, para contratações feitas durante a campanha.`
