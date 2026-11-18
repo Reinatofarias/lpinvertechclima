@@ -1,6 +1,7 @@
 import { Check, X, Star, ClipboardCheck } from "lucide-react";
 import Button from "@/components/ui/Button";
 import BfSelo from "@/components/blackfriday/BfSelo";
+import CountdownFixo from "@/components/blackfriday/CountdownFixo";
 import Countdown from "@/components/blackfriday/Countdown";
 import { GOOGLE_REVIEWS_URL } from "@/lib/constants";
 import {
@@ -128,6 +129,7 @@ export default function BlackFridayContent() {
 
   return (
     <div className="bg-[#0B1220] text-white">
+      <CountdownFixo fim={BF_FIM} />
       <div className="pt-16 md:pt-20">
         <FaixaCorrida />
       </div>
