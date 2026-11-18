@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { captureAttribution } from "@/lib/attribution";
+import { getLeadStorageKey } from "@/lib/leadStorage";
 
 interface LeadModalContextType {
   isOpen: boolean;
@@ -30,8 +31,7 @@ export function LeadModalProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const isPmocPage = pathname.includes("pmoc-palmas");
-    const storageKey = isPmocPage ? "invertech_lead_captured_pmoc" : "invertech_lead_captured_main";
+    const storageKey = getLeadStorageKey(pathname);
     
     const captured = localStorage.getItem(storageKey) === "true";
     const savedName = localStorage.getItem("invertech_lead_name");

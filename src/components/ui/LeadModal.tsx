@@ -8,6 +8,7 @@ import { MAKE_WEBHOOK_URL, PMOC_MAKE_WEBHOOK_URL } from "@/lib/constants";
 import { trackCtaClick, trackLeadSubmit } from "@/lib/analytics";
 import { getAttribution } from "@/lib/attribution";
 import { getPersonalizedWhatsappUrl } from "@/lib/utils";
+import { getLeadStorageKey, getPageName } from "@/lib/leadStorage";
 
 export default function LeadModal() {
   const { isOpen, targetUrl, ctaLocation, closeLeadModal, setHasCapturedLead } = useLeadModal();
@@ -84,17 +85,21 @@ export default function LeadModal() {
     setIsLoading(true);
 
     try {
-      const isPmocPage = typeof window !== "undefined" && window.location.pathname.includes("pmoc-palmas");
+      const pathname = typeof window !== "undefined" ? window.location.pathname : "";
+      const isPmocPage = pathname.includes("pmoc-palmas");
       const webhookUrl = isPmocPage ? PMOC_MAKE_WEBHOOK_URL : MAKE_WEBHOOK_URL;
-      const nomePagina = isPmocPage ? "PMOC Palmas" : "Principal";
+      const nomePagina = getPageName(pathname);
+      const isBlackFriday = nomePagina === "Black Friday";
 
       const payload = {
         nome: name.trim(),
         telefone: formattedPhone,
         data: new Date().toLocaleString("pt-BR", { timeZone: "America/Araguaina" }), // Palmas timezone
-        origem: ctaLocation || "unknown",
+        // Na Black Friday a origem já começa com "Black Friday" para destacar na planilha
+        origem: isBlackFriday ? `Black Friday | ${ctaLocation || "pagina"}` : ctaLocation || "unknown",
         pagina_origem: typeof window !== "undefined" ? window.location.href : "",
         nome_pagina: nomePagina,
+        campanha: isBlackFriday ? "Black Friday" : "",
         // Origem do anúncio (gclid/UTMs) para conversão offline e qualificação
         ...getAttribution(),
       };
@@ -108,7 +113,7 @@ export default function LeadModal() {
       });
       
       // 2. Save capture state in localStorage
-      const storageKey = isPmocPage ? "invertech_lead_captured_pmoc" : "invertech_lead_captured_main";
+      const storageKey = getLeadStorageKey(pathname);
       localStorage.setItem(storageKey, "true");
       localStorage.setItem("invertech_lead_name", name.trim());
       setHasCapturedLead(true);
